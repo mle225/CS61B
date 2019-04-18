@@ -20,34 +20,29 @@ public class NBody {
     }
 
     public static Planet[] readPlanets(String filename){
-        Planet[] allPlanets = new Planet[5];
-        try{
-//            DataInputStream in = new DataInputStream(
-//                    new FileInputStream(filename));
-//            Scanner in = new Scanner(new File (filename));
-            File file = new File(filename);
-//            In in = new In(file);
-            Scanner in = new Scanner(file);
-            int discard = in.nextInt();
-            double discard2 = in.nextDouble();
-            for(int i = 0; i < 5; i++) {
-                double xPos = in.nextDouble();
-                double yPos = in.nextDouble();
-                double xVel = in.nextDouble();
-                double yVel = in.nextDouble();
-                double mass = in.nextDouble();
-                String img = in.next();
-                allPlanets[i] = new Planet(xPos, yPos, xVel, yVel, mass, img);
-            }
+        File file = new File(filename);
+        In in = new In(file);
+//            Scanner in = new Scanner(file);
+        int planets = in.readInt();
+        double discard2 = in.readDouble();
+        Planet[] allPlanets = new Planet[planets];
+        for(int i = 0; i < planets; i++) {
+            double xPos = in.readDouble();
+            double yPos = in.readDouble();
+            double xVel = in.readDouble();
+            double yVel = in.readDouble();
+            double mass = in.readDouble();
+            String img = in.readString();
+            allPlanets[i] = new Planet(xPos, yPos, xVel, yVel, mass, img);
         }
-        catch(IllegalArgumentException ex) {
-            System.out.println("Error1");
-        } catch (FileNotFoundException e) {
-            System.out.println("Error2");
-        }
-        catch (InputMismatchException f){
-            System.out.println("Error 3 " + allPlanets[2].xxPos);
-        }
+//        catch(IllegalArgumentException ex) {
+//            System.out.println("Error1");
+//        } catch (FileNotFoundException e) {
+//            System.out.println("Error2");
+//        }
+//        catch (InputMismatchException f){
+//            System.out.println("Error 3 " + allPlanets[2].xxPos);
+//        }
 //      catch (IOException e) {
 //            e.printStackTrace();
 //        }
