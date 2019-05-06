@@ -10,8 +10,8 @@ public class ArrayDeque<T> {
         items = (T[]) new Object[8];
         size = 0;
         capacity = 8;
-        firstIndex = 0;
-        lastIndex = 0;
+        firstIndex = 3;
+        lastIndex = 3;
         loadFactor = 0;
     }
 
@@ -22,8 +22,10 @@ public class ArrayDeque<T> {
             a[i] = items[i];
         }
         items = a;
+        firstIndex = 0;
+        lastIndex = size -1;
         capacity = newCapacity;
-        loadFactor = size / capacity;
+        loadFactor = (double) size / (double) capacity;
     }
 
     //Helper method to find array to addFirst
@@ -99,7 +101,7 @@ public class ArrayDeque<T> {
         size--;
         firstIndex = plusOne(firstIndex);
         loadFactor = (double) size / (double) capacity;
-        if (loadFactor < 0.25 && size >= 16) {
+        if (loadFactor <= 0.25 && size >= 16) {
             resize(size / 2);
         }
 
@@ -115,7 +117,7 @@ public class ArrayDeque<T> {
         size--;
         lastIndex = minusOne(lastIndex);
         loadFactor = (double) size / (double) capacity;
-        if (loadFactor < 0.25 && size >= 16) {
+        if (loadFactor <= 0.25 && size >= 16) {
             resize(size / 2);
         }
         return a;
