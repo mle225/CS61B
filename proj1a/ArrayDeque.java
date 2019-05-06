@@ -1,116 +1,132 @@
-public class ArrayDeque<T>{
-    public T[] items;
+public class ArrayDeque<T> {
+    private T[] items;
     private int size;
     private int capacity;
-    private double load_factor;
-    private int first_index;
-    private int last_index;
+    private double loadFactor;
+    private int firstIndex;
+    public int lastIndex;
 
-    public ArrayDeque(){
+    public ArrayDeque() {
         items = (T[]) new Object[8];
         size = 0;
         capacity = 8;
-        first_index = 3;
-        last_index = 4;
-        load_factor = 0 ;
+        firstIndex = 3;
+        lastIndex = 3;
+        loadFactor = 0;
     }
 
     //Helper method to resize Array
-    public void resize(int newCapacity){
+    public void resize(int newCapacity) {
         T[] a = (T[]) new Object[newCapacity];
-        for (int i = 0; i < size; i++){
+        for (int i = 0; i < size; i++) {
             a[i] = items[i];
         }
         items = a;
         capacity = newCapacity;
-        load_factor = size / capacity;
+        loadFactor = size / capacity;
     }
 
     //Helper method to find array to addFirst
 
-    public int minusOne(int index){
-        if (index == 0)
-            return size-1;
-        else
-            return index-1;
+    public int minusOne(int index) {
+        if (index == 0) {
+            return capacity - 1;
+        }
+        else {
+            index--;
+            return index;
+        }
     }
 
-    public int plusOne(int index){
-        if (index == size -1)
+    public int plusOne(int index) {
+        if (index == capacity - 1) {
             return 0;
-        else
-            return index+1;
+        }
+        else {
+            return index + 1;
+        }
     }
 
-    public void addFirst(T item){
-//        if (size == capcity){
-//            this.resize(capacity *2);
+    public void addFirst(T item) {
+//        if (size == capacity) {
+//            this.resize(capacity * 2);
 //        }
-        if (this.isEmpty())
-            items[first_index] = item;
-        else
-            items[minusOne(first_index)] = item;
-        size++;
-        load_factor = size / capacity;
-
-    }
-
-    public void addLast (T item){
-//        if (size == capcity){
-//            this.resize(capacity *2);
-//        }
-        if (this.isEmpty())
-            items[last_index] = item;
-        else{
-            items[plusOne(last_index)] = item;
+        if (this.isEmpty()) {
+            items[firstIndex] = item;
+        }
+        else {
+            firstIndex = minusOne(firstIndex);
+            items[firstIndex] = item;
         }
         size++;
-        load_factor = size/ capacity;
+        loadFactor = size / capacity;
     }
 
-    public boolean isEmpty(){
+    public void addLast (T item) {
+        if (size == capacity){
+            this.resize(capacity * 2);
+        }
+        if (this.isEmpty()) {
+            items[lastIndex] = item;
+        }
+        else {
+            lastIndex = plusOne(lastIndex);
+            items[lastIndex] = item;
+        }
+        size++;
+        loadFactor = size / capacity;
+    }
+
+    public boolean isEmpty() {
         return size == 0;
     }
 
-    public int size(){
+    public int size() {
         return size;
     }
 
-    public void printDeque(){
-        for (int i =0; i < size -1; i++){
-            System.out.print(items[i] + " ");
+    public void printDeque() {
+//        for (int i = firstIndex; i > 0; i--)
+//            System.out.print(items[firstIndex] + " ");
+//        for (int j = 0; j < lastIndex; j++)
+//            System.out.print(items[lastIndex]+ " ");
+        for (int i =0; i < size; i++){
+            System.out.print (items[i] + " ");
         }
-        System.out.print(items[size-1]);
     }
 
-    public void removeFirst(){
-        items[first_index] = null;
-        first_index = minusOne(first_index);
+    public T removeFirst() {
+        if (size == 0) {
+            return null;
+        }
+        T a = items[firstIndex];
+//        items[firstIndex] = null;
         size--;
-        load_factor = (size)/capacity;
-//        if (load_factor < 0.25 && size >= 16){
-//            resize(size / 2);
-//        }
+        firstIndex = plusOne(firstIndex);
+        loadFactor = size / capacity;
+        if (loadFactor < 0.25 && size >= 16) {
+            resize(size / 2);
+        }
+
+        return a;
     }
 
-    public void removeLast(){
-        items[last_index] = null;
-        last_index = plusOne(last_index);
-        size++;
-        load_factor = (--size)/capacity;
-//        if (load_factor < 0.25 && size >= 16){
-//            resize(size / 2);
-//        }
+    public T removeLast() {
+        if (size == 0) {
+            return null;
+        }
+        T a = items[lastIndex];
+//        items[lastIndex] = null;
+        size--;
+        lastIndex = minusOne(lastIndex);
+        loadFactor = size / capacity;
+        if (loadFactor < 0.25 && size >= 16) {
+            resize(size / 2);
+        }
+        return a;
     }
 
-    public T get (int index){
+    public T get (int index) {
         return items[index];
     }
-
-
-
-
-
-
-
 }

@@ -18,32 +18,62 @@ public class ArrayDequeTest{
 //    }
 
     @Test
-    public static void testAddFirst(){
+    public void testAddFirst(){
         ArrayDeque<Integer> actual2 = new ArrayDeque<>();
         actual2.addFirst(1);
         actual2.addFirst(2);
         actual2.addFirst(3);
         actual2.addFirst(5);
         actual2.addFirst(7);
-        int[] expected2 = {5,3,2,1,0,0,0,7};
-        assertEquals(expected2, actual2);
 
+        assertEquals(1,(long)actual2.get(3));
+        assertEquals(2,(long)actual2.get(2));
+        assertEquals(3,(long)actual2.get(1));
+        assertEquals(5,(long)actual2.get(0));
+        assertEquals(7,(long)actual2.get(7));
     }
 
 
 //    @Test
 //    public void testAddLast(){
-//        ArrayDeque<int> expected3 = {1,2,3,4,5};
-//        ArrayDeque<int> actual3 = {1,2,3,4,0};
+//        ArrayDeque<Integer> actual3 = new ArrayDeque <>();
+//        actual3.addLast(1);
+//        actual3.addLast(2);
 //        actual3.addLast(5);
-//        assertEquals(expected3,actual3);
+//        actual3.addLast(7);
+//        actual3.addLast(4);
+//        actual3.addLast(3);
+//        actual3.addLast(8);
+//        actual3.addLast(6);
+//
+//
+//        ArrayDeque<Integer> expected3 = new ArrayDeque<>();
+//        expected3.items = new Integer[]{4, 3, 8, 6, 1, 2, 5, 7};
+//
+//        assertArrayEquals(expected3.items,actual3.items);
 //    }
 
+    @Test
+    public void testPrintDeque(){
+//        {4, 3, 8, 6, 1, 2, 5, 7}
+        ArrayDeque<Integer> actual4 = new ArrayDeque <>();
+        actual4.addLast(1);
+        actual4.addLast(2);
+        actual4.addLast(5);
+        actual4.addLast(7);
+        actual4.addLast(4);
+        actual4.addLast(3);
+        actual4.addLast(8);
+        actual4.addLast(6);
+
+        actual4.printDeque();
+    }
+
 //    @Test
-//    public void testIsempty(){
-//        bool expected4 = true;
-//        ArrayDeque<int> ad = new ArrayDeque<>();
-//        bool actual4 = ad.isEmpty();
+//    public void testIsEmpty(){
+//        boolean expected4 = true;
+//        ArrayDeque<Integer> ad = new ArrayDeque<>();
+//        boolean actual4 = ad.isEmpty();
 //        assertEquals(expected4,actual4);
 //    }
 
@@ -54,9 +84,35 @@ public class ArrayDequeTest{
 //        assertEquasl(exptected5,ad1.size);
 //    }
 
-//    @Test
-//    public void testRemoveFirst(){
-//
-//    }
+    @Test
+    public void testRemoveFirst(){
+        ArrayDeque<Integer> e5 = new ArrayDeque<>();
+        for (int i = 0; i < 6; i++){
+            e5.addLast(i);
+        }
+        e5.removeFirst();
+
+        assertEquals(1,(long)e5.removeFirst());
+
+    }
+
+    @Test
+    public void testRemoveLast(){
+        ArrayDeque<Integer> e6 = new ArrayDeque<>();
+        e6.addFirst(1);
+        e6.addFirst(2);
+        e6.addFirst(3);
+        e6.addFirst(4);
+        e6.addFirst(5);
+        e6.addFirst(6);
+        e6.addFirst(7);
+        e6.addFirst(8);
+
+        int n = e6.removeLast();
+
+        assertEquals(1,(long)n);
+        assertEquals(2, e6.lastIndex);
+
+    }
 
 }

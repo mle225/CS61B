@@ -98,7 +98,17 @@ public class LinkedListDeque<T>{
         return p.item;
     }
 
-    public static void main(String[] args){
-
+    public T getRecursive(int index){
+        int i = index;
+        Node p = first;
+        if (i >= size || i < 0)
+            return null;
+        if (index == 0)
+            return p.item;
+        else {
+            p = first.next;
+            index -= 1;
+            return getRecursive(index);
+        }
     }
 }
