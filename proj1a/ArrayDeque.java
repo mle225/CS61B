@@ -10,8 +10,8 @@ public class ArrayDeque<T> {
         items = (T[]) new Object[8];
         size = 0;
         capacity = 8;
-        firstIndex = 3;
-        lastIndex = 3;
+        firstIndex = 0;
+        lastIndex = 0;
         loadFactor = 0;
     }
 
@@ -31,8 +31,7 @@ public class ArrayDeque<T> {
     private int minusOne(int index) {
         if (index == 0) {
             return capacity - 1;
-        }
-        else {
+        } else {
             index--;
             return index;
         }
@@ -41,8 +40,7 @@ public class ArrayDeque<T> {
     private int plusOne(int index) {
         if (index == capacity - 1) {
             return 0;
-        }
-        else {
+        } else {
             return index + 1;
         }
     }
