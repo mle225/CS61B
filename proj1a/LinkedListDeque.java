@@ -1,20 +1,15 @@
 public class LinkedListDeque<T>{
 
-    public class Node{
+    private class Node{
 
         public T item;
         public Node next;
         public Node prev;
 
-        public Node(){
-            item = null;
-            next = this;
-            prev = next;
-        }
         public Node(T stuff, Node prev, Node next){
             item = stuff;
-            prev = prev;
-            next = next;
+            this.prev = prev;
+            this.next = next;
         }
     }
 
@@ -25,29 +20,29 @@ public class LinkedListDeque<T>{
 
     //Constructs empty Deque
     public LinkedListDeque(){
-        sen = new Node();
+        sen = new Node(null, null, null);
         first = sen;
         last = sen;
     }
 
-    //Constructs Deque w/ 1 item
-    public LinkedListDeque(T stuff){
-        sen = new Node();
-        Node a = new Node(stuff, sen, sen);
-        sen.next = a;
-        sen.prev = a;
-    }
-
     public void addFirst(T stuff){
-        Node a = new Node(stuff, sen, first);
-        sen.next = a;
+        sen.next = new Node(stuff, sen, first);
+        first.prev = sen.next;
+        first = sen.next;
         size++;
+        if (size == 1) {
+            last = first;
+        }
     }
 
     public void addLast(T stuff) {
-        Node a = new Node(stuff, last, sen);
-        sen.prev = a;
+        sen.prev = new Node(stuff, last, sen);
+        last.next = sen.prev;
+        last = sen.prev;
         size++;
+        if (size == 1) {
+            first = last;
+        }
     }
 
     public boolean isEmpty() {
@@ -62,15 +57,15 @@ public class LinkedListDeque<T>{
         Node p = first;
         while (p != last) {
             System.out.print(p.item + " ");
+            p = p.next;
         }
-        p = p.next;
     }
 
     public T removeFirst() {
         if (size == 0)
             return null;
         sen.next = first.next;
-        first.next.prev = sen;
+        (first.next).prev = sen;
         size--;
         return first.item;
     }
@@ -79,18 +74,18 @@ public class LinkedListDeque<T>{
         if (size == 0)
             return null;
         sen.prev = last.prev;
-        last.prev.next = sen;
+        (last.prev).next = sen;
         size--;
         return last.item;
     }
 
     public T get(int index) {
-        int i = index;
-        if (i == 0)
+        if (index == 0)
             return first.item;
-        if (i >= size || i < 0)
+        if (index >= size || index < 0)
             return null;
         Node p = first;
+        int i = 0;
         while (i < index) {
             p = p.next;
             i++;
@@ -99,16 +94,10 @@ public class LinkedListDeque<T>{
     }
 
     public T getRecursive(int index){
-        int i = index;
-        Node p = first;
-        if (i >= size || i < 0)
-            return null;
         if (index == 0)
-            return p.item;
-        else {
-            p = first.next;
-            index -= 1;
-            return getRecursive(index);
-        }
+            return first.item;
+        if (index >= size || index < 0)
+            return null;
+        return getRecursive(index--);
     }
 }

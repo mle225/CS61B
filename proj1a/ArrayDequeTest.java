@@ -19,18 +19,11 @@ public class ArrayDequeTest{
 
     @Test
     public void testAddFirst(){
-        ArrayDeque<Integer> actual2 = new ArrayDeque<>();
-        actual2.addFirst(1);
-        actual2.addFirst(2);
-        actual2.addFirst(3);
-        actual2.addFirst(5);
-        actual2.addFirst(7);
+        ArrayDeque<String> actual2 = new ArrayDeque<>();
+        actual2.addFirst("Egg");
 
-        assertEquals(1,(long)actual2.get(3));
-        assertEquals(2,(long)actual2.get(2));
-        assertEquals(3,(long)actual2.get(1));
-        assertEquals(5,(long)actual2.get(0));
-        assertEquals(7,(long)actual2.get(7));
+        assertEquals("Egg", actual2.removeFirst());
+
     }
 
 

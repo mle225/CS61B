@@ -16,7 +16,7 @@ public class ArrayDeque<T> {
     }
 
     //Helper method to resize Array
-    public void resize(int newCapacity) {
+    private void resize(int newCapacity) {
         T[] a = (T[]) new Object[newCapacity];
         for (int i = 0; i < size; i++) {
             a[i] = items[i];
@@ -28,7 +28,7 @@ public class ArrayDeque<T> {
 
     //Helper method to find array to addFirst
 
-    public int minusOne(int index) {
+    private int minusOne(int index) {
         if (index == 0) {
             return capacity - 1;
         }
@@ -38,7 +38,7 @@ public class ArrayDeque<T> {
         }
     }
 
-    public int plusOne(int index) {
+    private int plusOne(int index) {
         if (index == capacity - 1) {
             return 0;
         }
