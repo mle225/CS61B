@@ -108,10 +108,7 @@ public class ArrayDequeTest{
         e6.addFirst(7);
         e6.addFirst(8);
 
-        int n = e6.removeLast();
-
-        assertEquals(1,(long)n);
-        assertEquals(2, e6.lastIndex);
+        e6.printDeque();
 
     }
 

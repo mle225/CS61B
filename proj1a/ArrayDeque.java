@@ -4,7 +4,7 @@ public class ArrayDeque<T> {
     private int capacity;
     private double loadFactor;
     private int firstIndex;
-    public int lastIndex;
+    private int lastIndex;
 
     public ArrayDeque() {
         items = (T[]) new Object[8];
@@ -48,9 +48,9 @@ public class ArrayDeque<T> {
     }
 
     public void addFirst(T item) {
-//        if (size == capacity) {
-//            this.resize(capacity * 2);
-//        }
+        if (size == capacity) {
+            this.resize(capacity * 2);
+        }
         if (this.isEmpty()) {
             items[firstIndex] = item;
         }
@@ -59,7 +59,7 @@ public class ArrayDeque<T> {
             items[firstIndex] = item;
         }
         size++;
-        loadFactor = size / capacity;
+        loadFactor = (double) size / (double) capacity;
     }
 
     public void addLast (T item) {
@@ -74,7 +74,7 @@ public class ArrayDeque<T> {
             items[lastIndex] = item;
         }
         size++;
-        loadFactor = size / capacity;
+        loadFactor = (double) size / (double)capacity;
     }
 
     public boolean isEmpty() {
@@ -86,13 +86,10 @@ public class ArrayDeque<T> {
     }
 
     public void printDeque() {
-//        for (int i = firstIndex; i > 0; i--)
-//            System.out.print(items[firstIndex] + " ");
-//        for (int j = 0; j < lastIndex; j++)
-//            System.out.print(items[lastIndex]+ " ");
-        for (int i =0; i < size; i++){
-            System.out.print (items[i] + " ");
-        }
+        for (int i = firstIndex; i > 0; i--)
+            System.out.print(items[i] + " ");
+        for (int j = 0; j < lastIndex; j++)
+            System.out.print(items[j]+ " ");
     }
 
     public T removeFirst() {
@@ -103,7 +100,7 @@ public class ArrayDeque<T> {
 //        items[firstIndex] = null;
         size--;
         firstIndex = plusOne(firstIndex);
-        loadFactor = size / capacity;
+        loadFactor = (double) size / (double) capacity;
         if (loadFactor < 0.25 && size >= 16) {
             resize(size / 2);
         }
@@ -119,7 +116,7 @@ public class ArrayDeque<T> {
 //        items[lastIndex] = null;
         size--;
         lastIndex = minusOne(lastIndex);
-        loadFactor = size / capacity;
+        loadFactor = (double) size / (double) capacity;
         if (loadFactor < 0.25 && size >= 16) {
             resize(size / 2);
         }
@@ -129,4 +126,5 @@ public class ArrayDeque<T> {
     public T get (int index) {
         return items[index];
     }
+
 }
