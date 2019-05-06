@@ -3,8 +3,8 @@ public class ArrayDeque<T> {
     private int size;
     private int capacity;
     private double loadFactor;
-    private int firstIndex;
-    private int lastIndex;
+    public int firstIndex;
+    public int lastIndex;
 
     public ArrayDeque() {
         items = (T[]) new Object[8];
@@ -18,8 +18,12 @@ public class ArrayDeque<T> {
     //Helper method to resize Array
     private void resize(int newCapacity) {
         T[] a = (T[]) new Object[newCapacity];
-        for (int i = 0; i < size; i++) {
-            a[i] = items[i];
+        int i = firstIndex;
+        while (i != lastIndex){
+            int j = 0;
+            a[j] = items[i];
+            i = minusOne(firstIndex);
+            j++;
         }
         items = a;
         firstIndex = 0;
@@ -99,9 +103,7 @@ public class ArrayDeque<T> {
         T a = items[firstIndex];
 //        items[firstIndex] = null;
         size--;
-        if (size != 0) {
-            firstIndex = plusOne(firstIndex);
-        }
+        firstIndex = plusOne(firstIndex);
         loadFactor = (double) size / (double) capacity;
         if (loadFactor <= 0.25 && size >= 16) {
             resize(size / 2);
@@ -117,9 +119,7 @@ public class ArrayDeque<T> {
         T a = items[lastIndex];
 //        items[lastIndex] = null;
         size--;
-        if (size != 0) {
-            lastIndex = minusOne(lastIndex);
-        }
+        lastIndex = minusOne(lastIndex);
         loadFactor = (double) size / (double) capacity;
         if (loadFactor <= 0.25 && size >= 16) {
             resize(size / 2);
