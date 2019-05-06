@@ -99,7 +99,9 @@ public class ArrayDeque<T> {
         T a = items[firstIndex];
 //        items[firstIndex] = null;
         size--;
-        firstIndex = plusOne(firstIndex);
+        if (size != 0) {
+            firstIndex = plusOne(firstIndex);
+        }
         loadFactor = (double) size / (double) capacity;
         if (loadFactor <= 0.25 && size >= 16) {
             resize(size / 2);
@@ -115,7 +117,9 @@ public class ArrayDeque<T> {
         T a = items[lastIndex];
 //        items[lastIndex] = null;
         size--;
-        lastIndex = minusOne(lastIndex);
+        if (size != 0) {
+            lastIndex = minusOne(lastIndex);
+        }
         loadFactor = (double) size / (double) capacity;
         if (loadFactor <= 0.25 && size >= 16) {
             resize(size / 2);
