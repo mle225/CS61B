@@ -10,8 +10,8 @@ public class ArrayDeque<T> {
         items = (T[]) new Object[8];
         size = 0;
         capacity = 8;
-        firstIndex = 3;
-        lastIndex = 3;
+        firstIndex = 0;
+        lastIndex = 0;
         loadFactor = 0;
     }
 
@@ -22,7 +22,7 @@ public class ArrayDeque<T> {
         while (i != lastIndex){
             int j = 0;
             a[j] = items[i];
-            i = minusOne(firstIndex);
+            i = plusOne(firstIndex);
             j++;
         }
         items = a;
@@ -128,6 +128,7 @@ public class ArrayDeque<T> {
     }
 
     public T get (int index) {
+
         return items[index];
     }
 
