@@ -112,8 +112,9 @@ public class ArrayDequeTest{
             e7.addFirst(i);
         }
 
-        e7.addLast(8);
-        assertEquals(0, (long)e7.firstIndex);
+
+
+        assertEqual;
     }
 
 }

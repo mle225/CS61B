@@ -18,16 +18,31 @@ public class ArrayDeque<T> {
     //Helper method to resize Array
     private void resize(int newCapacity) {
         T[] a = (T[]) new Object[newCapacity];
-        int i = firstIndex;
-        while (i != lastIndex){
-            int j = 0;
-            a[j] = items[i];
-            i = plusOne(firstIndex);
-            j++;
+        int j;
+        if (firstIndex > lastIndex) {
+            int i = firstIndex;
+            j = 0;
+            while (i != lastIndex) {
+                a[j] = items[i];
+                i = minusOne(firstIndex);
+                j++;
+            }
+            items = a;
+            firstIndex = size-1;
+            lastIndex = 0;
         }
-        items = a;
-        firstIndex = 0;
-        lastIndex = size -1;
+        else {
+            int p = lastIndex;
+            j = size-1;
+            while (p != firstIndex) {
+                a[j] = items[p];
+                p = plusOne(firstIndex);
+                j--;
+            }
+            items = a;
+            firstIndex = 0;
+            lastIndex = size -1;
+        }
         capacity = newCapacity;
         loadFactor = (double) size / (double) capacity;
     }
@@ -101,9 +116,11 @@ public class ArrayDeque<T> {
             return null;
         }
         T a = items[firstIndex];
-//        items[firstIndex] = null;
+        items[firstIndex] = null;
         size--;
-        firstIndex = plusOne(firstIndex);
+        if (firstIndex != lastIndex) {
+            firstIndex = plusOne(firstIndex);
+        }
         loadFactor = (double) size / (double) capacity;
         if (loadFactor <= 0.25 && size >= 16) {
             resize(size / 2);
@@ -117,9 +134,11 @@ public class ArrayDeque<T> {
             return null;
         }
         T a = items[lastIndex];
-//        items[lastIndex] = null;
+        items[lastIndex] = null;
         size--;
-        lastIndex = minusOne(lastIndex);
+        if (lastIndex != firstIndex) {
+            lastIndex = minusOne(lastIndex);
+        }
         loadFactor = (double) size / (double) capacity;
         if (loadFactor <= 0.25 && size >= 16) {
             resize(size / 2);
