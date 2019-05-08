@@ -146,32 +146,32 @@ public class ArrayDequeTest{
 
     //}
 
-    @Test
-    public void testExpandContract() {
-        ArrayDeque<Integer> e8 = new ArrayDeque<>();
-
-        for (int i = 0; i < 5; i++){
-            e8.addFirst(i);
-        }
-
-        for (int d = 0; d < 3; d++){
-            e8.removeFirst();
-        }
-
-        for (int y = 5; y < 10; y++){
-            e8.addFirst(y);
-        }
-
-
-        for (int j = 0; j < 6; j++){
-            e8.removeFirst();
-        }
-        assertEquals(2, (long)e8.size());
-        assertEquals(1, (long)e8.removeFirst());
-
-
-
-    }
+//    @Test
+//    public void testExpandContract() {
+//        ArrayDeque<Integer> e8 = new ArrayDeque<>();
+//
+//        for (int i = 0; i < 5; i++){
+//            e8.addFirst(i);
+//        }
+//
+//        for (int d = 0; d < 3; d++){
+//            e8.removeFirst();
+//        }
+//
+//        for (int y = 5; y < 10; y++){
+//            e8.addFirst(y);
+//        }
+//
+//
+//        for (int j = 0; j < 6; j++){
+//            e8.removeFirst();
+//        }
+//        assertEquals(2, (long)e8.size());
+//        assertEquals(1, (long)e8.removeFirst());
+//
+//
+//
+//    }
 
 //    @Test
 //    public void testGet(){
@@ -192,6 +192,21 @@ public class ArrayDequeTest{
 //
 //
 //    }
+
+    @Test
+    public void testPrint(){
+        ArrayDeque<Integer> e9 = new ArrayDeque<>();
+        e9.addFirst(0);
+        e9.addFirst(1);
+        e9.addFirst(2);
+        e9.addFirst(3);
+        e9.addLast(4);
+        e9.addLast(5);
+        e9.addLast(6);
+        e9.addLast(7);
+
+        e9.printDeque();
+    }
 
 
 }

@@ -91,10 +91,12 @@ public class ArrayDeque<T> {
     }
 
     public void printDeque() {
-        for (int i = firstIndex; i > 0; i--)
-            System.out.print(items[i] + " ");
-        for (int j = 0; j < lastIndex; j++)
-            System.out.print(items[j]+ " ");
+        int i = firstIndex;
+        while (i != lastIndex){
+            System.out.println(items[i]);
+            i = minusOne(i, capacity);
+        }
+        System.out.println(items[lastIndex]);
     }
 
     public T removeFirst() {
