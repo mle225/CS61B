@@ -2,7 +2,7 @@ public class ArrayDeque<T> {
     private T[] items;
     private int size;
     public int capacity;
-    private double loadFactor;
+    public double loadFactor;
     public int firstIndex;
     public int lastIndex;
 
@@ -132,9 +132,20 @@ public class ArrayDeque<T> {
         return a;
     }
 
-    public T get (int index) {
+    public int getHelper(int increment, int index){
+        int getIndex = index;
+        for (int t = increment; t > 0; t--){
+            getIndex = plusOne(getIndex, capacity);
+        }
+        return getIndex;
+    }
 
-        return items[index];
+    public T get (int index) {
+        if (size == 0 || index >= size) {
+            return null;
+        }
+        int getIndex = getHelper(index,firstIndex);
+        return items[getIndex];
     }
 
 }

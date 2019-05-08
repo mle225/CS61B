@@ -107,35 +107,35 @@ public class ArrayDequeTest{
 //
 //    }
 
-    @Test
-    public void testResize(){
-        ArrayDeque<Integer> e7 = new ArrayDeque<>();
-        e7.addFirst(0);
-        e7.addFirst(1);
-        e7.addFirst(2);
-        e7.addFirst(3);
-        e7.addLast(4);
-        e7.addLast(5);
-        e7.addLast(6);
-        e7.addLast(7);
-
-        //resized
-
-        e7.addLast(11);
-        e7.addLast(12);
-        e7.addLast(13);
-        e7.addFirst(20);
-        e7.addFirst(21);
-        e7.addFirst(22);
-
-//        assertEquals(14, (long)e7.size());
-//        System.out.println(e7.get(5));
-//        System.out.println(e7.get(0));
-//        System.out.println(e7.get(7));
-        System.out.println(e7.lastIndex);
-        System.out.println(e7.firstIndex);
-
-//        System.out.println(e7.get(10));
+//    @Test
+//    public void testResize(){
+//        ArrayDeque<Integer> e7 = new ArrayDeque<>();
+//        e7.addFirst(0);
+//        e7.addFirst(1);
+//        e7.addFirst(2);
+//        e7.addFirst(3);
+//        e7.addLast(4);
+//        e7.addLast(5);
+//        e7.addLast(6);
+//        e7.addLast(7);
+//
+//        //resized
+//
+//        e7.addLast(11);
+//        e7.addLast(12);
+//        e7.addLast(13);
+//        e7.addFirst(20);
+//        e7.addFirst(21);
+//        e7.addFirst(22);
+//
+////        assertEquals(14, (long)e7.size());
+////        System.out.println(e7.get(5));
+////        System.out.println(e7.get(0));
+////        System.out.println(e7.get(7));
+//        System.out.println(e7.lastIndex);
+//        System.out.println(e7.firstIndex);
+//
+////        System.out.println(e7.get(10));
 
 
 //        System.out.println(e7.lastIndex);
@@ -144,6 +144,29 @@ public class ArrayDequeTest{
 //        assertEquals(3, (long)e7.firstIndex);
 //        assertEquals(6, (long)e7.lastIndex);
 
+    //}
+
+    @Test
+    public void testExpandContract() {
+        ArrayDeque<Integer> e8 = new ArrayDeque<>();
+
+        for (int i = 0; i < 56; i++){
+            e8.addFirst(i);
+        }
+
+        for (int j = 0; j < 56; j++){
+            e8.removeFirst();
+        }
+
+        for (int t = 0; t < 400; t++){
+            e8.addFirst(t);
+        }
+
+        for (int h = 0; h < 200; h++){
+            e8.removeFirst();
+        }
+
+        assert(199 == e8.removeFirst());
     }
 
 }
