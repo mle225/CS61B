@@ -1,7 +1,7 @@
 public class ArrayDeque<T> {
     private T[] items;
     private int size;
-    private int capacity;
+    public int capacity;
     private double loadFactor;
     public int firstIndex;
     public int lastIndex;
@@ -18,48 +18,34 @@ public class ArrayDeque<T> {
     //Helper method to resize Array
     private void resize(int newCapacity) {
         T[] a = (T[]) new Object[newCapacity];
-        int j;
-        if (firstIndex > lastIndex) {
-            int i = firstIndex;
-            j = 0;
-            while (i != lastIndex) {
-                a[j] = items[i];
-                i = minusOne(firstIndex);
-                j++;
-            }
-            items = a;
-            firstIndex = size-1;
-            lastIndex = 0;
+        //copy array qua
+        int i = firstIndex;
+        int j = 0;
+        for(int k = 0; k < size; k++) {
+            a[j] = items[i];
+            j = minusOne(j, newCapacity);
+            i = minusOne(i, capacity);
         }
-        else {
-            int p = lastIndex;
-            j = size-1;
-            while (p != firstIndex) {
-                a[j] = items[p];
-                p = plusOne(firstIndex);
-                j--;
-            }
-            items = a;
-            firstIndex = 0;
-            lastIndex = size -1;
-        }
+        items = a;
         capacity = newCapacity;
+        firstIndex = 0;
+        lastIndex = capacity - size + 1;
         loadFactor = (double) size / (double) capacity;
     }
 
     //Helper method to find array to addFirst
 
-    private int minusOne(int index) {
+    private int minusOne(int index, int cap) {
         if (index == 0) {
-            return capacity - 1;
+            return cap - 1;
         } else {
             index--;
             return index;
         }
     }
 
-    private int plusOne(int index) {
-        if (index == capacity - 1) {
+    private int plusOne(int index, int cap) {
+        if (index == cap - 1) {
             return 0;
         } else {
             return index + 1;
@@ -74,7 +60,7 @@ public class ArrayDeque<T> {
             items[firstIndex] = item;
         }
         else {
-            firstIndex = minusOne(firstIndex);
+            firstIndex = plusOne(firstIndex, capacity);
             items[firstIndex] = item;
         }
         size++;
@@ -89,7 +75,7 @@ public class ArrayDeque<T> {
             items[lastIndex] = item;
         }
         else {
-            lastIndex = plusOne(lastIndex);
+            lastIndex = minusOne(lastIndex, capacity);
             items[lastIndex] = item;
         }
         size++;
@@ -116,10 +102,10 @@ public class ArrayDeque<T> {
             return null;
         }
         T a = items[firstIndex];
-        items[firstIndex] = null;
+//        items[firstIndex] = null;
         size--;
         if (firstIndex != lastIndex) {
-            firstIndex = plusOne(firstIndex);
+            firstIndex = minusOne(firstIndex, capacity);
         }
         loadFactor = (double) size / (double) capacity;
         if (loadFactor <= 0.25 && size >= 16) {
@@ -134,10 +120,10 @@ public class ArrayDeque<T> {
             return null;
         }
         T a = items[lastIndex];
-        items[lastIndex] = null;
+//        items[lastIndex] = null;
         size--;
         if (lastIndex != firstIndex) {
-            lastIndex = minusOne(lastIndex);
+            lastIndex = plusOne(lastIndex, capacity);
         }
         loadFactor = (double) size / (double) capacity;
         if (loadFactor <= 0.25 && size >= 16) {

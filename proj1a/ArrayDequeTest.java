@@ -92,29 +92,58 @@ public class ArrayDequeTest{
 //    @Test
 //    public void testRemoveLast(){
 //        ArrayDeque<Integer> e6 = new ArrayDeque<>();
-//        e6.addFirst(1);
-//        e6.addFirst(2);
-//        e6.addFirst(3);
-//        e6.addFirst(4);
-//        e6.addFirst(5);
-//        e6.addFirst(6);
-//        e6.addFirst(7);
-//        e6.addFirst(8);
+//        e6.addLast(1);
+//        e6.addLast(2);
+//        e6.addLast(3);
+//        e6.removeFirst();
+//        e6.removeFirst();
 //
-//        e6.printDeque();
+//        assertEquals(3, (long)e6.removeFirst());
+//        assert(2 == e6.lastIndex);
+//        assert(2 == e6.firstIndex);
+//
+//
+//
 //
 //    }
 
     @Test
     public void testResize(){
         ArrayDeque<Integer> e7 = new ArrayDeque<>();
-        for (int i = 0; i < 8; i++){
-            e7.addFirst(i);
-        }
+        e7.addFirst(0);
+        e7.addFirst(1);
+        e7.addFirst(2);
+        e7.addFirst(3);
+        e7.addLast(4);
+        e7.addLast(5);
+        e7.addLast(6);
+        e7.addLast(7);
+
+        //resized
+
+        e7.addLast(11);
+        e7.addLast(12);
+        e7.addLast(13);
+        e7.addFirst(20);
+        e7.addFirst(21);
+        e7.addFirst(22);
+
+//        assertEquals(14, (long)e7.size());
+//        System.out.println(e7.get(5));
+//        System.out.println(e7.get(0));
+//        System.out.println(e7.get(7));
+        System.out.println(e7.lastIndex);
+        System.out.println(e7.firstIndex);
+
+//        System.out.println(e7.get(10));
 
 
+//        System.out.println(e7.lastIndex);
+//        assertEquals(2, (long)e7.get(14));
+//        assertEquals(13, (long)e7.get(6));
+//        assertEquals(3, (long)e7.firstIndex);
+//        assertEquals(6, (long)e7.lastIndex);
 
-        assertEqual;
     }
 
 }
