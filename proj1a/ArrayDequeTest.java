@@ -146,48 +146,52 @@ public class ArrayDequeTest{
 
     //}
 
-//    @Test
-//    public void testExpandContract() {
-//        ArrayDeque<Integer> e8 = new ArrayDeque<>();
-//
-//        for (int i = 0; i < 56; i++){
-//            e8.addFirst(i);
-//        }
-//
-//        for (int j = 0; j < 56; j++){
-//            e8.removeFirst();
-//        }
-//
-//        for (int t = 0; t < 400; t++){
-//            e8.addFirst(t);
-//        }
-//
-//        for (int h = 0; h < 200; h++){
-//            e8.removeFirst();
-//        }
-//
-//        assert(199 == e8.removeFirst());
-//    }
-
     @Test
-    public void testGet(){
+    public void testExpandContract() {
         ArrayDeque<Integer> e8 = new ArrayDeque<>();
-        e8.addFirst(0);
-        e8.addFirst(1);
-        e8.addFirst(2);
-        e8.addFirst(3);
-        e8.addLast(4);
-        e8.addLast(5);
-        e8.addLast(6);
-        e8.addLast(7);
 
-        assertEquals(7, (long)e8.get(7));
-        assertEquals(0, (long)e8.get(3));
-        assertEquals(2, (long)e8.get(1));
+        for (int i = 0; i < 5; i++){
+            e8.addFirst(i);
+        }
+
+        for (int d = 0; d < 3; d++){
+            e8.removeFirst();
+        }
+
+        for (int y = 5; y < 10; y++){
+            e8.addFirst(y);
+        }
+
+
+        for (int j = 0; j < 6; j++){
+            e8.removeFirst();
+        }
+        assertEquals(2, (long)e8.size());
+        assertEquals(1, (long)e8.removeFirst());
 
 
 
     }
+
+//    @Test
+//    public void testGet(){
+//        ArrayDeque<Integer> e8 = new ArrayDeque<>();
+//        e8.addFirst(0);
+//        e8.addFirst(1);
+//        e8.addFirst(2);
+//        e8.addFirst(3);
+//        e8.addLast(4);
+//        e8.addLast(5);
+//        e8.addLast(6);
+//        e8.addLast(7);
+//
+//        assertEquals(7, (long)e8.get(7));
+//        assertEquals(0, (long)e8.get(3));
+//        assertEquals(2, (long)e8.get(1));
+//
+//
+//
+//    }
 
 
 }
