@@ -1,10 +1,10 @@
 public class ArrayDeque<T> {
     private T[] items;
     private int size;
-    public int capacity;
-    public double loadFactor;
-    public int firstIndex;
-    public int lastIndex;
+    private int capacity;
+    private double loadFactor;
+    private int firstIndex;
+    private int lastIndex;
 
     public ArrayDeque() {
         items = (T[]) new Object[8];
@@ -134,7 +134,7 @@ public class ArrayDeque<T> {
         return a;
     }
 
-    public int getHelper(int increment, int index){
+    private int getHelper(int increment, int index){
         int getIndex = index;
         for (int t = 0; t < increment; t++){
             getIndex = minusOne(getIndex, capacity);
