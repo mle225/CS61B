@@ -134,8 +134,8 @@ public class ArrayDeque<T> {
 
     public int getHelper(int increment, int index){
         int getIndex = index;
-        for (int t = increment; t > 0; t--){
-            getIndex = plusOne(getIndex, capacity);
+        for (int t = 0; t < increment; t++){
+            getIndex = minusOne(getIndex, capacity);
         }
         return getIndex;
     }
@@ -143,6 +143,12 @@ public class ArrayDeque<T> {
     public T get (int index) {
         if (size == 0 || index >= size) {
             return null;
+        }
+        if (index == 0) {
+            return items[firstIndex];
+        }
+        if (index == size -1) {
+            return items[lastIndex];
         }
         int getIndex = getHelper(index,firstIndex);
         return items[getIndex];
