@@ -29,7 +29,7 @@ public class ArrayDeque<T> {
         items = a;
         capacity = newCapacity;
         firstIndex = 0;
-        lastIndex = capacity - size + 1;
+        lastIndex = (capacity/2) + 1;
         loadFactor = (double) size / (double) capacity;
     }
 
