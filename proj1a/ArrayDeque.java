@@ -6,6 +6,8 @@ public class ArrayDeque<T> {
     private int firstIndex;
     private int lastIndex;
 
+    //Constructor, first & last pointer start at 0
+    //First & last point to same place if empty/ if 1 elem
     public ArrayDeque() {
         items = (T[]) new Object[8];
         size = 0;
@@ -30,7 +32,6 @@ public class ArrayDeque<T> {
         capacity = newCapacity;
         firstIndex = 0;
         lastIndex = (capacity/2) + 1;
-        loadFactor = (double) size / (double) capacity;
     }
 
     //Helper method to find array to addFirst
@@ -39,8 +40,7 @@ public class ArrayDeque<T> {
         if (index == 0) {
             return cap - 1;
         } else {
-            index--;
-            return index;
+            return index -1;
         }
     }
 
@@ -64,7 +64,6 @@ public class ArrayDeque<T> {
             items[firstIndex] = item;
         }
         size++;
-        loadFactor = (double) size / (double) capacity;
     }
 
     public void addLast (T item) {
@@ -79,7 +78,6 @@ public class ArrayDeque<T> {
             items[lastIndex] = item;
         }
         size++;
-        loadFactor = (double) size / (double)capacity;
     }
 
     public boolean isEmpty() {

@@ -107,71 +107,52 @@ public class ArrayDequeTest{
 //
 //    }
 
-    @Test
-    public void testResize(){
-        ArrayDeque<Integer> e7 = new ArrayDeque<>();
-        e7.addFirst(0);
-        e7.addFirst(1);
-        e7.addFirst(2);
-        e7.addFirst(3);
-        e7.addLast(4);
-        e7.addLast(5);
-        e7.addLast(6);
-        e7.addLast(7);
-
-        //resized
-
-        e7.addLast(11);
-        e7.addLast(12);
-        e7.addLast(13);
-        e7.addFirst(20);
-        e7.addFirst(21);
-        e7.addFirst(22);
-//
-////        assertEquals(14, (long)e7.size());
-////        System.out.println(e7.get(5));
-////        System.out.println(e7.get(0));
-////        System.out.println(e7.get(7));
-//        System.out.println(e7.lastIndex);
-//        System.out.println(e7.firstIndex);
-//
-////        System.out.println(e7.get(10));
-
-
-//        System.out.println(e7.lastIndex);
-//        assertEquals(2, (long)e7.get(14));
-//        assertEquals(13, (long)e7.get(6));
-//        assertEquals(3, (long)e7.firstIndex);
-//        assertEquals(6, (long)e7.lastIndex);
-
-    }
-
 //    @Test
-//    public void testExpandContract() {
-//        ArrayDeque<Integer> e8 = new ArrayDeque<>();
+//    public void testResize(){
+//        ArrayDeque<Integer> e7 = new ArrayDeque<>();
+//        e7.addFirst(0);
+//        e7.addFirst(1);
+//        e7.addFirst(2);
+//        e7.addFirst(3);
+//        e7.addLast(4);
+//        e7.addLast(5);
+//        e7.addLast(6);
+//        e7.addLast(7);
 //
-//        for (int i = 0; i < 5; i++){
-//            e8.addFirst(i);
-//        }
+//        //resized
 //
-//        for (int d = 0; d < 3; d++){
-//            e8.removeFirst();
-//        }
+//        e7.addLast(11);
+//        e7.addLast(12);
+//        e7.addLast(13);
+//        e7.addFirst(20);
+//        e7.addFirst(21);
+//        e7.addFirst(22);
+////
+//////        assertEquals(14, (long)e7.size());
+//////        System.out.println(e7.get(5));
+//////        System.out.println(e7.get(0));
+//////        System.out.println(e7.get(7));
+////        System.out.println(e7.lastIndex);
+////        System.out.println(e7.firstIndex);
+////
+//////        System.out.println(e7.get(10));
 //
-//        for (int y = 5; y < 10; y++){
-//            e8.addFirst(y);
-//        }
 //
-//
-//        for (int j = 0; j < 6; j++){
-//            e8.removeFirst();
-//        }
-//        assertEquals(2, (long)e8.size());
-//        assertEquals(1, (long)e8.removeFirst());
-//
-//
+////        System.out.println(e7.lastIndex);
+////        assertEquals(2, (long)e7.get(14));
+////        assertEquals(13, (long)e7.get(6));
+////        assertEquals(3, (long)e7.firstIndex);
+////        assertEquals(6, (long)e7.lastIndex);
 //
 //    }
+
+    @Test
+    public void testExpandContract() {
+        ArrayDeque<Integer> e8 = new ArrayDeque<>();
+
+
+
+    }
 
 //    @Test
 //    public void testGet(){

@@ -1,6 +1,6 @@
 public class LinkedListDeque<T>{
 
-    private class Node{
+    private class Node <T>{
 
         public T item;
         public Node next;
@@ -14,35 +14,31 @@ public class LinkedListDeque<T>{
     }
 
     private Node sen;
-    private Node first;
-    private Node last;
     private int size = 0;
 
     //Constructs empty Deque
     public LinkedListDeque(){
-        sen = new Node(null, null, null);
-        first = sen;
-        last = sen;
+        sen = new Node<>(999, null, null);
+        sen.next = sen;
+        sen.prev = sen;
     }
 
     public void addFirst(T stuff){
-        sen.next = new Node(stuff, sen, first);
-        first.prev = sen.next;
-        first = sen.next;
+        sen.next = new Node(stuff, sen, sen.next);
+        sen.next.next.prev = sen.next;
         size++;
-        if (size == 1) {
-            last = first;
-        }
+        if (size == 1)
+            sen.prev = sen.next;
+
     }
 
     public void addLast(T stuff) {
-        sen.prev = new Node(stuff, last, sen);
-        last.next = sen.prev;
-        last = sen.prev;
+        sen.prev = new Node(stuff, sen.prev, sen);
+        sen.prev.prev.next = sen.prev;
         size++;
-        if (size == 1) {
-            first = last;
-        }
+        if (size == 1)
+            sen.next = sen.prev;
+
     }
 
     public boolean isEmpty() {
@@ -54,8 +50,8 @@ public class LinkedListDeque<T>{
     }
 
     public void printDeque() {
-        Node p = first;
-        while (p != last) {
+        Node p = sen.next;
+        while (p != sen.prev) {
             System.out.print(p.item + " ");
             p = p.next;
         }
@@ -64,40 +60,41 @@ public class LinkedListDeque<T>{
     public T removeFirst() {
         if (size == 0)
             return null;
-        sen.next = first.next;
-        (first.next).prev = sen;
-        first = sen.next;
+        T a = (T) sen.next.item;
+        sen.next.next.prev = sen;
+        sen.next = sen.next.next;
         size--;
-        return first.item;
+        return a;
     }
 
     public T removeLast() {
-        if (size == 0)
+        if (size == 0) {
             return null;
-        sen.prev = last.prev;
-        (last.prev).next = sen;
+        }
+        T a = (T) sen.next.item;
+        sen.prev.prev.next = sen;
+        sen.prev = sen.prev.prev;
         size--;
-        last = sen.prev;
-        return last.item;
+        return a;
     }
 
     public T get(int index) {
         if (index == 0)
-            return first.item;
+            return (T) sen.next.item;
         if (index >= size || index < 0)
             return null;
-        Node p = first;
+        Node p = sen.next;
         int i = 0;
         while (i < index) {
             p = p.next;
             i++;
         }
-        return p.item;
+        return (T) p.item;
     }
 
     public T getRecursive(int index){
         if (index == 0)
-            return first.item;
+            return (T) sen.next.item;
         if (index >= size || index < 0)
             return null;
         return getRecursive(index--);
