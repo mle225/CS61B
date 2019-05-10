@@ -146,48 +146,65 @@ public class ArrayDequeTest{
 //
 //    }
 
-    @Test
-    public void testExpandContract() {
-        ArrayDeque<Integer> e8 = new ArrayDeque<>();
-
-
-
-    }
+//    @Test
+//    public void testExpandContract() {
+//        ArrayDeque<Integer> e8 = new ArrayDeque<>();
+//
+//
+//
+//    }
 
 //    @Test
 //    public void testGet(){
+//
 //        ArrayDeque<Integer> e8 = new ArrayDeque<>();
+//
+//
 //        e8.addFirst(0);
-//        e8.addFirst(1);
-//        e8.addFirst(2);
-//        e8.addFirst(3);
-//        e8.addLast(4);
-//        e8.addLast(5);
+//        e8.addLast(1);
+//        e8.addLast(2);
+//        e8.addLast(3);
+////        e8.get(2);
+//        e8.removeLast();
 //        e8.addLast(6);
 //        e8.addLast(7);
+//        e8.addLast(8);
+//        e8.removeLast();
+//        e8.addFirst(10);
+////        e8.get(5);
+//        e8.addFirst(12);
+//        e8.removeFirst();
+//        e8.addFirst(14);
+//        e8.addLast(15);
+//        assertEquals(16, e8.capacity);
+////        e8.printDeque();
+//        e8.removeLast();
+//        e8.removeFirst();
+////        e8.printDeque();
+//        assertEquals(6, e8.size());
+//        assertEquals(16, e8.capacity);
 //
-//        assertEquals(7, (long)e8.get(7));
-//        assertEquals(0, (long)e8.get(3));
-//        assertEquals(2, (long)e8.get(1));
-//
-//
-//
+//        e8.removeFirst();
+//        e8.removeFirst();
+//        e8.removeFirst();
+//        e8.addLast(21);
+////
 //    }
 
-//    @Test
-//    public void testPrint(){
-//        ArrayDeque<Integer> e9 = new ArrayDeque<>();
-//        e9.addFirst(0);
-//        e9.addFirst(1);
-//        e9.addFirst(2);
-//        e9.addFirst(3);
-//        e9.addLast(4);
-//        e9.addLast(5);
-//        e9.addLast(6);
-//        e9.addLast(7);
-//
-//        e9.printDeque();
-//    }
+    @Test
+    public void testPrint(){
+        ArrayDeque<Integer> e9 = new ArrayDeque<>();
+        e9.addFirst(0);
+        e9.addFirst(1);
+        e9.addFirst(2);
+        e9.addFirst(3);
+        e9.addLast(4);
+        e9.addLast(5);
+        e9.addLast(6);
+        e9.addLast(7);
+
+        e9.printDeque();
+    }
 
 
 }

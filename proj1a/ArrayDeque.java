@@ -5,7 +5,7 @@ public class ArrayDeque <T>{
     private double loadFactor;
     private int firstIndex;
     private int lastIndex;
-    private int capacity;
+    public int capacity;
 
     //Constructor
     public ArrayDeque() {
@@ -35,7 +35,7 @@ public class ArrayDeque <T>{
         items = newItems;
         //new Array starts at 0, end at lastArray
         firstIndex = 0;
-        lastIndex = this.capacity + 1;
+        lastIndex = (newCapacity/2) + 1;
         capacity = newCapacity;
     }
 
@@ -97,6 +97,7 @@ public class ArrayDeque <T>{
         int t = firstIndex;
         while (t != lastIndex) {
             System.out.print( items[t] + " ");
+            t = minusOne(t, this.capacity);
         }
         System.out.print(items[lastIndex]);
     }
