@@ -1,11 +1,11 @@
-public class ArrayDeque <T>{
+public class ArrayDeque<T> {
 
     private T[] items;
     private int size;
     private double loadFactor;
     private int firstIndex;
     private int lastIndex;
-    public int capacity;
+    private int capacity;
 
     //Constructor
     public ArrayDeque() {
@@ -35,7 +35,7 @@ public class ArrayDeque <T>{
         items = newItems;
         //new Array starts at 0, end at lastArray
         firstIndex = 0;
-        lastIndex = (newCapacity/2) + 1;
+        lastIndex = (newCapacity / 2) + 1;
         capacity = newCapacity;
     }
 
@@ -48,39 +48,37 @@ public class ArrayDeque <T>{
     }
 
     private int plusOne(int index, int cap) {
-        if (index == (cap -1)) {
+        if (index == (cap - 1)) {
             return 0;
         }
         return index + 1;
     }
 
     //adds item into first slot
-    public void addFirst (T item) {
+    public void addFirst(T item) {
         if (size == 0) {
             items[firstIndex] = item;
-        }
-        else {
+        } else {
             firstIndex = plusOne(firstIndex, capacity);
             items[firstIndex] = item;
         }
         size++;
         //resize if array is full
-        if (size == capacity){
+        if (size == capacity) {
             resize(capacity * 2);
         }
     }
 
-    public void addLast (T item) {
+    public void addLast(T item) {
         if (size == 0) {
             items[lastIndex] = item;
-        }
-        else {
+        } else {
             lastIndex = minusOne(lastIndex, capacity);
             items[lastIndex] = item;
         }
         size++;
         //resize if array is full
-        if (size == capacity){
+        if(size == capacity){
             resize(capacity * 2);
         }
     }
@@ -96,7 +94,7 @@ public class ArrayDeque <T>{
     public void printDeque() {
         int t = firstIndex;
         while (t != lastIndex) {
-            System.out.print( items[t] + " ");
+            System.out.print(items[t] + " ");
             t = minusOne(t, this.capacity);
         }
         System.out.print(items[lastIndex]);
@@ -106,8 +104,7 @@ public class ArrayDeque <T>{
     public T removeFirst() {
         if (size == 0) {
             return null;
-        }
-        else {
+        } else {
             T returnVal = items[firstIndex];
             size--;
             if (size != 0) {
@@ -125,8 +122,7 @@ public class ArrayDeque <T>{
     public T removeLast() {
         if (size == 0) {
             return null;
-        }
-        else {
+        } else {
             T returnVal = items[lastIndex];
             size--;
             if (size != 0) {
@@ -143,26 +139,21 @@ public class ArrayDeque <T>{
 
     private int getHelper (int increment, int index) {
         int getIndex = index;
-        for (int i = 0; i < increment; i++) {
+        for(int i = 0; i < increment; i++) {
             getIndex = minusOne(getIndex, this.capacity);
         }
         return getIndex;
     }
 
-    public T get (int index) {
-        if (index < 0 || index >= size) {
+    public T get(int index) {
+        if(index < 0 || index >= size) {
             return null;
-        }
-        if (index == 0) {
+        } if(index == 0) {
             return items[firstIndex];
-        }
-        if (index == size - 1) {
+        } if(index == size - 1) {
             return items[lastIndex];
         }
         int getIndex = getHelper(index, firstIndex);
         return items[getIndex];
     }
-
-
-
 }
