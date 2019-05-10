@@ -34,10 +34,14 @@ public class LinkedListDeque<T>{
 
     public void addLast(T stuff) {
         sen.prev = new Node(stuff, sen.prev, sen);
-        sen.prev.prev.next = sen.prev;
         size++;
-        if (size == 1)
+        if (size == 1) {
             sen.next = sen.prev;
+        }
+        else {
+            sen.prev.prev.next = sen.prev;
+        }
+
 
     }
 

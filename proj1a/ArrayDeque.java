@@ -1,62 +1,62 @@
-public class ArrayDeque<T> {
+public class ArrayDeque <T>{
+
     private T[] items;
     private int size;
-    private int capacity;
     private double loadFactor;
     private int firstIndex;
     private int lastIndex;
+    private int capacity;
 
-    //Constructor, first & last pointer start at 0
-    //First & last point to same place if empty/ if 1 elem
+    //Constructor
     public ArrayDeque() {
+        //starting size 8
         items = (T[]) new Object[8];
         size = 0;
+        //start both pointers at 0
+        firstIndex = lastIndex = 0;
         capacity = 8;
-        firstIndex = 0;
-        lastIndex = 0;
-        loadFactor = 0;
     }
 
-    //Helper method to resize Array
+    //helper method to resize array
     private void resize(int newCapacity) {
-        T[] a = (T[]) new Object[newCapacity];
-        //copy array qua
-        int i = firstIndex;
-        int j = 0;
-        for(int k = 0; k < size; k++) {
-            a[j] = items[i];
-            j = minusOne(j, newCapacity);
-            i = minusOne(i, capacity);
+        T[] newItems = (T[]) new Object[newCapacity];
+        int newIndex = 0;
+        int oldIndex = firstIndex;
+        //assigns old array into new, starting at 0
+        //minusOne every time
+        for (int rep = 0; rep < size; rep++) {
+            newItems[newIndex] = items[oldIndex];
+            //walks new array
+            newIndex = minusOne(newIndex, newCapacity);
+            //walks old array
+            oldIndex = minusOne(oldIndex, this.capacity);
         }
-        items = a;
-        capacity = newCapacity;
+        //assigns old array to new one
+        items = newItems;
+        //new Array starts at 0, end at lastArray
         firstIndex = 0;
-        lastIndex = (capacity/2) + 1;
+        lastIndex = this.capacity + 1;
+        capacity = newCapacity;
     }
 
-    //Helper method to find array to addFirst
-
+    //helper method to find index
     private int minusOne(int index, int cap) {
         if (index == 0) {
             return cap - 1;
-        } else {
-            return index -1;
         }
+        return index - 1;
     }
 
     private int plusOne(int index, int cap) {
-        if (index == cap - 1) {
+        if (index == (cap -1)) {
             return 0;
-        } else {
-            return index + 1;
         }
+        return index + 1;
     }
 
-    public void addFirst(T item) {
-        if (size == capacity) {
-            this.resize(capacity * 2);
-        }
-        if (this.isEmpty()) {
+    //adds item into first slot
+    public void addFirst (T item) {
+        if (size == 0) {
             items[firstIndex] = item;
         }
         else {
@@ -64,13 +64,14 @@ public class ArrayDeque<T> {
             items[firstIndex] = item;
         }
         size++;
+        //resize if array is full
+        if (size == capacity){
+            resize(capacity * 2);
+        }
     }
 
     public void addLast (T item) {
-        if (size == capacity){
-            this.resize(capacity * 2);
-        }
-        if (this.isEmpty()) {
+        if (size == 0) {
             items[lastIndex] = item;
         }
         else {
@@ -78,6 +79,10 @@ public class ArrayDeque<T> {
             items[lastIndex] = item;
         }
         size++;
+        //resize if array is full
+        if (size == capacity){
+            resize(capacity * 2);
+        }
     }
 
     public boolean isEmpty() {
@@ -89,69 +94,74 @@ public class ArrayDeque<T> {
     }
 
     public void printDeque() {
-        int i = firstIndex;
-        while (i != lastIndex){
-            System.out.println(items[i]);
-            i = minusOne(i, capacity);
+        int t = firstIndex;
+        while (t != lastIndex) {
+            System.out.print( items[t] + " ");
         }
-        System.out.println(items[lastIndex]);
+        System.out.print(items[lastIndex]);
     }
 
+    //removes and returns first item in AD
     public T removeFirst() {
         if (size == 0) {
             return null;
         }
-        T a = items[firstIndex];
-//        items[firstIndex] = null;
-        size--;
-        if (size != 0) {
-            firstIndex = minusOne(firstIndex, capacity);
+        else {
+            T returnVal = items[firstIndex];
+            size--;
+            if (size != 0) {
+                firstIndex = minusOne(firstIndex, this.capacity);
+            }
+            //resize if < 25% used
+            loadFactor = (double) size / (double) capacity;
+            if (loadFactor <= 0.25 && capacity >= 16) {
+                resize(capacity / 2);
+            }
+            return returnVal;
         }
-        loadFactor = (double) size / (double) capacity;
-        if (loadFactor <= 0.25 && size >= 16) {
-            resize(size / 2);
-        }
-
-        return a;
     }
 
     public T removeLast() {
         if (size == 0) {
             return null;
         }
-        T a = items[lastIndex];
-//        items[lastIndex] = null;
-        size--;
-        if (size != 0) {
-            lastIndex = plusOne(lastIndex, capacity);
+        else {
+            T returnVal = items[lastIndex];
+            size--;
+            if (size != 0) {
+                lastIndex = plusOne(lastIndex, this.capacity);
+            }
+            //resize if < 25% used
+            loadFactor = (double) size / (double) capacity;
+            if (loadFactor <= 0.25 && capacity >= 16) {
+                resize(capacity / 2);
+            }
+            return returnVal;
         }
-        loadFactor = (double) size / (double) capacity;
-        if (loadFactor <= 0.25 && size >= 16) {
-            resize(size / 2);
-        }
-        return a;
     }
 
-    private int getHelper(int increment, int index){
+    private int getHelper (int increment, int index) {
         int getIndex = index;
-        for (int t = 0; t < increment; t++){
-            getIndex = minusOne(getIndex, capacity);
+        for (int i = 0; i < increment; i++) {
+            getIndex = minusOne(getIndex, this.capacity);
         }
         return getIndex;
     }
 
     public T get (int index) {
-        if (size == 0 || index >= size) {
+        if (index < 0 || index >= size) {
             return null;
         }
         if (index == 0) {
             return items[firstIndex];
         }
-        if (index == size -1) {
+        if (index == size - 1) {
             return items[lastIndex];
         }
-        int getIndex = getHelper(index,firstIndex);
+        int getIndex = getHelper(index, firstIndex);
         return items[getIndex];
     }
+
+
 
 }
