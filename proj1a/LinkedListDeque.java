@@ -114,7 +114,7 @@ public class LinkedListDeque<T> {
         return (T) p.item;
     }
 
-    public T getRecursive (int index) {
+    public T getRecursive(int index) {
         if (index < 0 || index >= size) {
             return  null;
         }
