@@ -78,7 +78,7 @@ public class ArrayDeque<T> {
         }
         size++;
         //resize if array is full
-        if(size == capacity){
+        if (size == capacity) {
             resize(capacity * 2);
         }
     }
@@ -137,20 +137,22 @@ public class ArrayDeque<T> {
         }
     }
 
-    private int getHelper (int increment, int index) {
+    private int getHelper(int increment, int index) {
         int getIndex = index;
-        for(int i = 0; i < increment; i++) {
+        for (int i = 0; i < increment; i++) {
             getIndex = minusOne(getIndex, this.capacity);
         }
         return getIndex;
     }
 
     public T get(int index) {
-        if(index < 0 || index >= size) {
+        if (index < 0 || index >= size) {
             return null;
-        } if(index == 0) {
+        }
+        if (index == 0) {
             return items[firstIndex];
-        } if(index == size - 1) {
+        }
+        if (index == size - 1) {
             return items[lastIndex];
         }
         int getIndex = getHelper(index, firstIndex);

@@ -1,3 +1,7 @@
+import sun.awt.image.ImageWatched;
+
+import java.util.LinkedList;
+
 public class LinkedListDeque<T>{
 
     private class Node <T>{
@@ -16,33 +20,35 @@ public class LinkedListDeque<T>{
     private Node sen;
     private int size = 0;
 
-    //Constructs empty Deque
-    public LinkedListDeque(){
-        sen = new Node<>(999, null, null);
+    //Constructor for empty LLD
+    public LinkedListDeque() {
+        Node<Integer> sen = new Node <>(999, null, null);
         sen.next = sen;
         sen.prev = sen;
     }
 
-    public void addFirst(T stuff){
-        sen.next = new Node(stuff, sen, sen.next);
-        sen.next.next.prev = sen.next;
+    public void addFirst (T item) {
         size++;
-        if (size == 1)
-            sen.prev = sen.next;
-
+        Node first = new Node(item, sen, sen.next);
+        if (size == 1) {
+            sen.next = first;
+            sen.prev = first;
+        } else {
+            sen.next.prev = first;
+            sen.next = first;
+        }
     }
 
-    public void addLast(T stuff) {
-        sen.prev = new Node(stuff, sen.prev, sen);
+    public void addLast (T item) {
         size++;
+        Node last = new Node(item, sen.prev, sen);
         if (size == 1) {
-            sen.next = sen.prev;
+            sen.next = last;
+            sen.prev = last;
+        } else {
+            sen.prev.next = last;
+            sen.prev = last;
         }
-        else {
-            sen.prev.prev.next = sen.prev;
-        }
-
-
     }
 
     public boolean isEmpty() {
@@ -59,14 +65,21 @@ public class LinkedListDeque<T>{
             System.out.print(p.item + " ");
             p = p.next;
         }
+        System.out.print(p.item);
     }
 
     public T removeFirst() {
-        if (size == 0)
+        if (size == 0) {
             return null;
+        }
         T a = (T) sen.next.item;
-        sen.next.next.prev = sen;
-        sen.next = sen.next.next;
+        if (size == 1) {
+            sen.next = sen;
+            sen.prev = sen;
+        } else {
+            sen.next = sen.next.next;
+            sen.next.prev = sen;
+        }
         size--;
         return a;
     }
@@ -75,32 +88,55 @@ public class LinkedListDeque<T>{
         if (size == 0) {
             return null;
         }
-        T a = (T) sen.next.item;
-        sen.prev.prev.next = sen;
-        sen.prev = sen.prev.prev;
+        T a = (T) sen.prev.item;
+        if (size == 1) {
+            sen.next = sen;
+            sen.prev = sen;
+        } else {
+            sen.prev = sen.prev.prev;
+            sen.prev.next = sen;
+        }
         size--;
         return a;
     }
 
     public T get(int index) {
-        if (index == 0)
-            return (T) sen.next.item;
-        if (index >= size || index < 0)
+        int i = index;
+        if (i < 0 || i >= size) {
             return null;
+        }
+        if (i == 0) {
+            return (T) sen.next.item;
+        }
+        if (i == size - 1) {
+            return (T) sen.prev.item;
+        }
         Node p = sen.next;
-        int i = 0;
-        while (i < index) {
+        for (int j = 0; j < i; j++) {
             p = p.next;
-            i++;
         }
         return (T) p.item;
     }
 
-    public T getRecursive(int index){
-        if (index == 0)
-            return (T) sen.next.item;
-        if (index >= size || index < 0)
+    private Node<T> getHelper(LinkedListDeque a, int index) {
+        if (index == 0) {
+            return a.sen.next;
+        }
+        return
+    }
+
+    public T getRecursive (int index) {
+        if (index < 0 || index >= size) {
             return null;
-        return getRecursive(index--);
+        }
+        if (index == 0) {
+            return getHelper(this,index).item;
+        }
+        if (index == size - 1) {
+            return  (T) sen.prev.item;
+        }
+        
+
+        return getRecursive (index - 1);
     }
 }
