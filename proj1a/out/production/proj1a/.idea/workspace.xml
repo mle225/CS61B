@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2a0ab720-dd09-4371-8a8c-e02ebc053933" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/ArrayDeque.java" beforeDir="false" afterPath="$PROJECT_DIR$/ArrayDeque.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/LinkedListDeque.java" beforeDir="false" afterPath="$PROJECT_DIR$/LinkedListDeque.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -15,13 +15,30 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/ArrayDeque.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="294">
-              <caret line="31" column="21" selection-start-line="31" selection-start-column="21" selection-end-line="31" selection-end-column="21" />
+            <state relative-caret-position="2482">
+              <caret line="150" column="9" selection-start-line="150" selection-start-column="9" selection-end-line="150" selection-end-column="9" />
               <folding>
-                <marker date="1557424817718" expanded="true" signature="2549:2582" ph="..." />
+                <element signature="e#2275#2276#0" expanded="true" />
+                <element signature="e#2307#2308#0" expanded="true" />
+                <element signature="e#2332#2333#0" expanded="true" />
+                <element signature="e#2359#2360#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/LinkedListDeque.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="221">
+              <caret line="54" column="5" selection-start-line="54" selection-start-column="5" selection-end-line="54" selection-end-column="5" />
+              <folding>
+                <element signature="e#1103#1104#0" expanded="true" />
+                <element signature="e#1135#1136#0" expanded="true" />
+                <element signature="e#1185#1186#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -30,8 +47,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/ArrayDequeTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="3230">
-              <caret line="191" column="2" selection-start-line="191" selection-start-column="2" selection-end-line="191" selection-end-column="2" />
+            <state relative-caret-position="3417">
+              <caret line="202" column="20" selection-start-line="202" selection-start-column="20" selection-end-line="202" selection-end-column="20" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -57,42 +74,36 @@
         <option value="$PROJECT_DIR$/ArrayDequeTest" />
         <option value="$PROJECT_DIR$/out/LLDSelfTest.java" />
         <option value="$PROJECT_DIR$/LLDSelfTest.java" />
-        <option value="$PROJECT_DIR$/LinkedListDeque.java" />
         <option value="$PROJECT_DIR$/ArrayDequeTest.java" />
         <option value="$PROJECT_DIR$/ArrayDeque.java" />
+        <option value="$PROJECT_DIR$/LinkedListDeque.java" />
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="-15" />
-    <option name="y" value="-15" />
-    <option name="width" value="3235" />
-    <option name="height" value="1735" />
+  <component name="ProjectFrameBounds">
+    <option name="x" value="1380" />
+    <option name="width" value="1835" />
+    <option name="height" value="1715" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
-    <navigator currentView="Scope" currentSubView="Scope 'Project Files'; set:Project Files; class com.intellij.psi.search.scope.ProjectFilesScope" proportions="" version="1">
+    <navigator proportions="" version="1">
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="PackagesPane" />
-      <pane id="ProjectPane" />
-      <pane id="Scope">
-        <subPane subId="Scope 'Project Files'; set:Project Files; class com.intellij.psi.search.scope.ProjectFilesScope">
+      <pane id="Scope" />
+      <pane id="ProjectPane">
+        <subPane>
           <expand>
             <path>
-              <item name="proj1a" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
-              <item name="proj1a" type="2674bda8:ScopeViewTreeModel$GroupNode" />
-            </path>
-            <path>
-              <item name="proj1a" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
-              <item name="proj1a" type="2674bda8:ScopeViewTreeModel$GroupNode" />
-              <item name="C:\Users\Minh Le\Desktop\CS61B\proj1a" type="442cc68d:ScopeViewTreeModel$RootNode" />
+              <item name="proj1a" type="b2602c69:ProjectViewProjectNode" />
+              <item name="proj1a" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
+      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -115,7 +126,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="JUnit.ArrayDequeTest.testResize">
+  <component name="RunManager" selected="JUnit.LLDTest.testLLD">
     <configuration name="ArrayDequeTest.testExpandContract" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="proj1a" />
       <option name="PACKAGE_NAME" value="" />
@@ -146,16 +157,6 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="ArrayDequeTest.testRemoveLast" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="proj1a" />
-      <option name="PACKAGE_NAME" value="" />
-      <option name="MAIN_CLASS_NAME" value="ArrayDequeTest" />
-      <option name="METHOD_NAME" value="testRemoveLast" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="ArrayDequeTest.testResize" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="proj1a" />
       <option name="PACKAGE_NAME" value="" />
@@ -166,13 +167,23 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="LLDTest.testLLD" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="proj1a" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="LLDTest" />
+      <option name="METHOD_NAME" value="testLLD" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.ArrayDequeTest.testResize" />
+        <item itemvalue="JUnit.LLDTest.testLLD" />
         <item itemvalue="JUnit.ArrayDequeTest.testPrint" />
-        <item itemvalue="JUnit.ArrayDequeTest.testExpandContract" />
         <item itemvalue="JUnit.ArrayDequeTest.testGet" />
-        <item itemvalue="JUnit.ArrayDequeTest.testRemoveLast" />
+        <item itemvalue="JUnit.ArrayDequeTest.testResize" />
+        <item itemvalue="JUnit.ArrayDequeTest.testExpandContract" />
       </list>
     </recent_temporary>
   </component>
@@ -190,42 +201,42 @@
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="ArrayDequeTest_testExpandContract - 2019.05.08 at 18h 31m 40s.xml">
-      <configuration name="ArrayDequeTest.testExpandContract" configurationId="JUnit" />
+    <history-entry file="ArrayDequeTest_testGet - 2019.05.10 at 08h 04m 45s.xml">
+      <configuration name="ArrayDequeTest.testGet" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="ArrayDequeTest_testExpandContract - 2019.05.08 at 18h 32m 44s.xml">
-      <configuration name="ArrayDequeTest.testExpandContract" configurationId="JUnit" />
+    <history-entry file="ArrayDequeTest_testGet - 2019.05.10 at 08h 05m 18s.xml">
+      <configuration name="ArrayDequeTest.testGet" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="ArrayDequeTest_testExpandContract - 2019.05.08 at 18h 34m 25s.xml">
-      <configuration name="ArrayDequeTest.testExpandContract" configurationId="JUnit" />
+    <history-entry file="ArrayDequeTest_testGet - 2019.05.10 at 08h 06m 04s.xml">
+      <configuration name="ArrayDequeTest.testGet" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="ArrayDequeTest_testExpandContract - 2019.05.08 at 18h 34m 32s.xml">
-      <configuration name="ArrayDequeTest.testExpandContract" configurationId="JUnit" />
+    <history-entry file="ArrayDequeTest_testGet - 2019.05.10 at 08h 06m 18s.xml">
+      <configuration name="ArrayDequeTest.testGet" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="ArrayDequeTest_testExpandContract - 2019.05.08 at 18h 34m 56s.xml">
-      <configuration name="ArrayDequeTest.testExpandContract" configurationId="JUnit" />
+    <history-entry file="ArrayDequeTest_testGet - 2019.05.10 at 08h 09m 33s.xml">
+      <configuration name="ArrayDequeTest.testGet" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="ArrayDequeTest_testExpandContract - 2019.05.08 at 18h 36m 01s.xml">
-      <configuration name="ArrayDequeTest.testExpandContract" configurationId="JUnit" />
+    <history-entry file="ArrayDequeTest_testGet - 2019.05.10 at 08h 16m 12s.xml">
+      <configuration name="ArrayDequeTest.testGet" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="ArrayDequeTest_testExpandContract - 2019.05.08 at 18h 37m 51s.xml">
-      <configuration name="ArrayDequeTest.testExpandContract" configurationId="JUnit" />
+    <history-entry file="ArrayDequeTest_testGet - 2019.05.10 at 08h 16m 51s.xml">
+      <configuration name="ArrayDequeTest.testGet" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="ArrayDequeTest_testExpandContract - 2019.05.08 at 18h 38m 16s.xml">
-      <configuration name="ArrayDequeTest.testExpandContract" configurationId="JUnit" />
+    <history-entry file="ArrayDequeTest_testGet - 2019.05.10 at 08h 17m 09s.xml">
+      <configuration name="ArrayDequeTest.testGet" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="ArrayDequeTest_testPrint - 2019.05.09 at 02h 13m 06s.xml">
-      <configuration name="ArrayDequeTest.testPrint" configurationId="JUnit" />
+    <history-entry file="ArrayDequeTest_testGet - 2019.05.10 at 08h 18m 17s.xml">
+      <configuration name="ArrayDequeTest.testGet" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="ArrayDequeTest_testPrint - 2019.05.09 at 02h 14m 04s.xml">
+    <history-entry file="ArrayDequeTest_testPrint - 2019.05.10 at 08h 19m 39s.xml">
       <configuration name="ArrayDequeTest.testPrint" configurationId="JUnit" />
     </history-entry>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-6" y="-6" width="1293" height="693" extended-state="6" />
+    <frame x="552" y="0" width="734" height="686" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" weight="0.24696356" />
+      <window_info content_ui="combo" id="Project" order="0" weight="0.05059022" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Designer" order="2" />
       <window_info id="Image Layers" order="3" />
@@ -234,8 +245,8 @@
       <window_info id="Favorites" order="6" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.3374778" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.39786857" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.3381295" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.39253998" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
@@ -282,6 +293,30 @@
       <window_info anchor="right" id="Maven" order="6" />
       <window_info anchor="right" id="Palette&#9;" order="7" />
     </layout-to-restore>
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/ArrayDequeTest.java</url>
+          <line>189</line>
+          <properties />
+          <option name="timeStamp" value="2" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/ArrayDequeTest.java</url>
+          <line>159</line>
+          <properties />
+          <option name="timeStamp" value="5" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/ArrayDequeTest.java</url>
+          <line>181</line>
+          <properties />
+          <option name="timeStamp" value="9" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
   <component name="antWorkspaceConfiguration">
     <option name="IS_AUTOSCROLL_TO_SOURCE" value="false" />
@@ -398,35 +433,44 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/LinkedListDeque.java">
+    <entry file="file://$PROJECT_DIR$/LinkedListDeque.class">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="53">
-          <caret line="61" column="5" lean-forward="true" selection-start-line="61" selection-start-column="5" selection-end-line="61" selection-end-column="5" />
-          <folding>
-            <element signature="e#1009#1010#0" expanded="true" />
-            <element signature="e#1041#1042#0" expanded="true" />
-            <element signature="e#1066#1067#0" expanded="true" />
-            <element signature="e#1093#1094#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="85">
+          <caret line="5" column="32" selection-start-line="5" selection-start-column="32" selection-end-line="5" selection-end-column="32" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/ArrayDeque.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="294">
-          <caret line="31" column="21" selection-start-line="31" selection-start-column="21" selection-end-line="31" selection-end-column="21" />
+        <state relative-caret-position="2482">
+          <caret line="150" column="9" selection-start-line="150" selection-start-column="9" selection-end-line="150" selection-end-column="9" />
           <folding>
-            <marker date="1557424817718" expanded="true" signature="2549:2582" ph="..." />
+            <element signature="e#2275#2276#0" expanded="true" />
+            <element signature="e#2307#2308#0" expanded="true" />
+            <element signature="e#2332#2333#0" expanded="true" />
+            <element signature="e#2359#2360#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/ArrayDequeTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3230">
-          <caret line="191" column="2" selection-start-line="191" selection-start-column="2" selection-end-line="191" selection-end-column="2" />
+        <state relative-caret-position="3417">
+          <caret line="202" column="20" selection-start-line="202" selection-start-column="20" selection-end-line="202" selection-end-column="20" />
           <folding>
             <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/LinkedListDeque.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="221">
+          <caret line="54" column="5" selection-start-line="54" selection-start-column="5" selection-end-line="54" selection-end-column="5" />
+          <folding>
+            <element signature="e#1103#1104#0" expanded="true" />
+            <element signature="e#1135#1136#0" expanded="true" />
+            <element signature="e#1185#1186#0" expanded="true" />
           </folding>
         </state>
       </provider>

@@ -18,33 +18,33 @@ public class LinkedListDeque<T>{
 
     //Constructor for empty LLD
     public LinkedListDeque() {
-        Node<Integer> sen = new Node <>(999, null, null);
+        sen = new Node (999, null, null);
         sen.next = sen;
         sen.prev = sen;
     }
 
     public void addFirst (T item) {
-        size++;
-        Node first = new Node(item, sen, sen.next);
-        if (size == 1) {
-            sen.next = first;
-            sen.prev = first;
+        if (size == 0) {
+            sen.next = new Node<>(item, sen, sen.next);
+            sen.prev = sen.next;
         } else {
+            Node first = new Node<>(item, sen, sen.next);
             sen.next.prev = first;
             sen.next = first;
         }
+        size++;
     }
 
     public void addLast (T item) {
-        size++;
-        Node last = new Node(item, sen.prev, sen);
-        if (size == 1) {
-            sen.next = last;
-            sen.prev = last;
+        if (size == 0) {
+            sen.prev = new Node(item, sen.prev, sen);
+            sen.next = sen.prev;
         } else {
+            Node last = new Node(item, sen.prev, sen);
             sen.prev.next = last;
             sen.prev = last;
         }
+        size++;
     }
 
     public boolean isEmpty() {
