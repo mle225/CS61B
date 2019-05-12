@@ -1,12 +1,12 @@
-public class LinkedListDeque<T>{
+public class LinkedListDeque<T> {
 
-    private class Node <T>{
+    private class Node<T> {
 
-        public T item;
-        public Node next;
-        public Node prev;
+        private T item;
+        private Node next;
+        private Node prev;
 
-        public Node(T stuff, Node prev, Node next){
+        public Node(T stuff, Node prev, Node next) {
             item = stuff;
             this.prev = prev;
             this.next = next;
@@ -18,12 +18,12 @@ public class LinkedListDeque<T>{
 
     //Constructor for empty LLD
     public LinkedListDeque() {
-        sen = new Node (999, null, null);
+        sen = new Node(999, null, null);
         sen.next = sen;
         sen.prev = sen;
     }
 
-    public void addFirst (T item) {
+    public void addFirst(T item) {
         if (size == 0) {
             sen.next = new Node<>(item, sen, sen.next);
             sen.prev = sen.next;
@@ -35,7 +35,7 @@ public class LinkedListDeque<T>{
         size++;
     }
 
-    public void addLast (T item) {
+    public void addLast(T item) {
         if (size == 0) {
             sen.prev = new Node(item, sen.prev, sen);
             sen.next = sen.prev;
