@@ -11,9 +11,8 @@ public class LLDTest {
         a.addLast(0);
         a.addFirst(1);
         a.addFirst(2);
-        assertEquals(0, (long)a.get(3));
-        assertEquals(2, (long)a.get(0));
-        assertEquals(2,(long)a.removeFirst());
+        assertEquals(0, (long)a.getRecursive(3));
+//        assertEquals(2, (long)a.get(0));
 //        System.out.println(a.sen.next.item);
 //        System.out.println(a.sen.prev.item);
 
