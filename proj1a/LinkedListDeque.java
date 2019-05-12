@@ -118,24 +118,24 @@ public class LinkedListDeque<T>{
         return (T) p.item;
     }
 
-    private Node<T> getHelper(LinkedListDeque a, int index) {
-        if (index == 0) {
-            return a.sen.next;
-        }
-        return
-    }
+//    private Node<T> getHelper(LinkedListDeque a, int index) {
+//        if (index == 0) {
+//            return a.sen.next;
+//        }
+//        return
+//    }
 
     public T getRecursive (int index) {
         if (index < 0 || index >= size) {
             return null;
         }
         if (index == 0) {
-            return getHelper(this,index).item;
+            return (T) sen.next.item;
         }
         if (index == size - 1) {
             return  (T) sen.prev.item;
         }
-        
+
 
         return getRecursive (index - 1);
     }
