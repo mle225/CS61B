@@ -1,4 +1,4 @@
-public class LinkedListDeque<T> {
+public class LinkedListDeque<T> implements Deque<T>{
 
     private class Node<T> {
 
@@ -23,6 +23,7 @@ public class LinkedListDeque<T> {
         sen.prev = sen;
     }
 
+    @Override
     public void addFirst(T item) {
         if (size == 0) {
             sen.next = new Node<>(item, sen, sen.next);
@@ -35,6 +36,7 @@ public class LinkedListDeque<T> {
         size++;
     }
 
+    @Override
     public void addLast(T item) {
         if (size == 0) {
             sen.prev = new Node(item, sen.prev, sen);
@@ -47,14 +49,17 @@ public class LinkedListDeque<T> {
         size++;
     }
 
+    @Override
     public boolean isEmpty() {
         return size == 0;
     }
 
+    @Override
     public int size() {
         return size;
     }
 
+    @Override
     public void printDeque() {
         Node p = sen.next;
         while (p != sen.prev) {
@@ -64,6 +69,7 @@ public class LinkedListDeque<T> {
         System.out.print(p.item);
     }
 
+    @Override
     public T removeFirst() {
         if (size == 0) {
             return null;
@@ -80,6 +86,7 @@ public class LinkedListDeque<T> {
         return a;
     }
 
+    @Override
     public T removeLast() {
         if (size == 0) {
             return null;
@@ -96,6 +103,7 @@ public class LinkedListDeque<T> {
         return a;
     }
 
+    @Override
     public T get(int index) {
         int i = index;
         if (i < 0 || i >= size) {
@@ -127,4 +135,16 @@ public class LinkedListDeque<T> {
         }
         return (T) getRecursiveHelper(a.next, index - 1);
     }
+
+//    public Deque<Character> wordToDeque(String word){
+//
+//        String temp = word;
+//        LinkedListDeque<Character> d = new LinkedListDeque<>();
+//        while (temp.length() != 0) {
+//            char front = temp.charAt(0);
+//            d.addLast(front);
+//            temp = temp.substring(1);
+//        }
+//        return d;
+//    }
 }
