@@ -100,7 +100,6 @@ public class ArrayHeap<T> implements ExtrinsicPQ<T> {
         }
     }
 
-
     /**
      * Bubbles up the node currently at the given index.
      */
@@ -109,9 +108,10 @@ public class ArrayHeap<T> implements ExtrinsicPQ<T> {
         validateSinkSwimArg(index);
 
         int pIndex = index / 2;
-        while (index > 1 && min(index, pIndex) == pIndex) {
+        while (index > 1 && min(index, pIndex) == index) {
             swap(index, pIndex);
-            index = index / 2;
+            index /= 2;
+            pIndex = index / 2;
         }
     }
 
@@ -127,7 +127,7 @@ public class ArrayHeap<T> implements ExtrinsicPQ<T> {
             //left child Index = parent * 2
             int cIndex = 2 * index;
             //if right child < left Child => take right child Index
-            if (cIndex < size && min(cIndex, cIndex + 1) == cIndex)
+            if (cIndex < size && min(cIndex, cIndex + 1) != cIndex)
                 cIndex++;
             //if parent lower priority than highest priority child => break
             if (min(index, cIndex) != cIndex)
@@ -148,15 +148,8 @@ public class ArrayHeap<T> implements ExtrinsicPQ<T> {
             resize(contents.length * 2);
         }
         Node n = new Node(item, priority);
-        if (size == 0) {
-            size ++;
-            contents[size] = n;
-        }
-        else {
-            contents[size] = n;
-            swim(size);
-            size++;
-        }
+        contents[++size] = n;
+        swim(size);
     }
 
     /**
@@ -180,8 +173,8 @@ public class ArrayHeap<T> implements ExtrinsicPQ<T> {
     @Override
     public T removeMin() {
         Node ret = contents[1];
-        swap(size - 1, 1);
-        contents[size -1] = null;
+        swap(size , 1);
+        contents[size] = null;
         sink(1);
         size--;
         return ret.item();
