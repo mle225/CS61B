@@ -1,0 +1,52 @@
+package byog.Core;
+
+import byog.TileEngine.TETile;
+import byog.TileEngine.Tileset;
+
+import java.util.Random;
+
+public class Room {
+
+    private static int SEED = 141;
+    private static Random r = new Random(SEED);
+
+    private int width;
+    private int height;
+    private Point lowerLeft;
+    private Point upperRight;
+    private Point center;
+
+    public Room(int newWidth, int newHeight, TETile[][] map) {
+
+        width = newWidth;
+        height = newHeight;
+        lowerLeft = new Point(r.nextInt(map[0].length - 9) + 1, r.nextInt(map.length - 9)+ 1);
+        upperRight = new Point(lowerLeft.x() + width, lowerLeft.y() + height);
+        center = new Point(lowerLeft.x() + (width / 2), lowerLeft.y() + (height / 2));
+    }
+
+    public Point getCenter() {
+        return center;
+    }
+
+    public void drawRoom (TETile[][] map) {
+
+        for (int r = lowerLeft.y(); r < upperRight.y(); r++) {
+            for (int c = lowerLeft.x(); c < upperRight.x(); c++) {
+                map[r][c] = Tileset.FLOOR;
+            }
+        }
+    }
+
+    public void drawWall (TETile[][] map) {
+        for (int i = lowerLeft.y() - 1; i < upperRight.y() + 1; i++) {
+            for (int j = lowerLeft.x() - 1; j < upperRight.x() + 1; j++) {
+                if (map[i][j] == Tileset.NOTHING) {
+                    map[i][j] = Tileset.WALL;
+                }
+            }
+        }
+    }
+
+
+}

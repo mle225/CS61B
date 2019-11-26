@@ -1,0 +1,12 @@
+Todo:
+
+0) Fix botHUD clash with render
+1) How tf do u die ???
+1a) Implement new way to keep track of monsters -> kill faster
+1b) Pause Menu
+3) New Level
+- Improve boss movement
+- Color variant floor + walls
+- Weapons (?)
+
+- Scalability issues

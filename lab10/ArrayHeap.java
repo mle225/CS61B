@@ -27,24 +27,25 @@ public class ArrayHeap<T> implements ExtrinsicPQ<T> {
      * Returns the index of the node to the left of the node at i.
      */
     private static int leftIndex(int i) {
-        /* TODO: Your code here! */
-        return 0;
+        return 2 * i;
     }
 
     /**
      * Returns the index of the node to the right of the node at i.
      */
     private static int rightIndex(int i) {
-        /* TODO: Your code here! */
-        return 0;
+        return (2 * i) + 1;
     }
 
     /**
      * Returns the index of the node that is the parent of the node at i.
      */
     private static int parentIndex(int i) {
-        /* TODO: Your code here! */
-        return 0;
+        if (i == 1) {
+            return 0;
+        }
+        else
+            return i / 2;
     }
 
     /**
@@ -92,7 +93,7 @@ public class ArrayHeap<T> implements ExtrinsicPQ<T> {
             return index2;
         } else if (node2 == null) {
             return index1;
-        } else if (node1.myPriority < node2.myPriority) {
+        } else if (node1.priority() < node2.priority()) {
             return index1;
         } else {
             return index2;
@@ -107,8 +108,11 @@ public class ArrayHeap<T> implements ExtrinsicPQ<T> {
         // Throws an exception if index is invalid. DON'T CHANGE THIS LINE.
         validateSinkSwimArg(index);
 
-        /** TODO: Your code here. */
-        return;
+        int pIndex = index / 2;
+        while (index > 1 && min(index, pIndex) == pIndex) {
+            swap(index, pIndex);
+            index = index / 2;
+        }
     }
 
     /**
@@ -118,8 +122,19 @@ public class ArrayHeap<T> implements ExtrinsicPQ<T> {
         // Throws an exception if index is invalid. DON'T CHANGE THIS LINE.
         validateSinkSwimArg(index);
 
-        /** TODO: Your code here. */
-        return;
+        //check if child not oob, keep sinking till reached place
+        while (2 * index <= size) {
+            //left child Index = parent * 2
+            int cIndex = 2 * index;
+            //if right child < left Child => take right child Index
+            if (cIndex < size && min(cIndex, cIndex + 1) == cIndex)
+                cIndex++;
+            //if parent lower priority than highest priority child => break
+            if (min(index, cIndex) != cIndex)
+                break;
+            swap(index, cIndex);
+            index = cIndex;
+        }
     }
 
     /**
@@ -132,8 +147,16 @@ public class ArrayHeap<T> implements ExtrinsicPQ<T> {
         if (size + 1 == contents.length) {
             resize(contents.length * 2);
         }
-
-        /* TODO: Your code here! */
+        Node n = new Node(item, priority);
+        if (size == 0) {
+            size ++;
+            contents[size] = n;
+        }
+        else {
+            contents[size] = n;
+            swim(size);
+            size++;
+        }
     }
 
     /**
@@ -142,8 +165,7 @@ public class ArrayHeap<T> implements ExtrinsicPQ<T> {
      */
     @Override
     public T peek() {
-        /* TODO: Your code here! */
-        return null;
+        return contents[1].item();
     }
 
     /**
@@ -157,8 +179,12 @@ public class ArrayHeap<T> implements ExtrinsicPQ<T> {
      */
     @Override
     public T removeMin() {
-        /* TODO: Your code here! */
-        return null;
+        Node ret = contents[1];
+        swap(size - 1, 1);
+        contents[size -1] = null;
+        sink(1);
+        size--;
+        return ret.item();
     }
 
     /**
@@ -180,8 +206,19 @@ public class ArrayHeap<T> implements ExtrinsicPQ<T> {
      */
     @Override
     public void changePriority(T item, double priority) {
-        /* TODO: Your code here! */
-        return;
+        //search for item first
+        int index = 1;
+        while (contents[index].priority() != priority) {
+            index++;
+        }
+        double pCurrent = contents[index].myPriority;
+        contents[index].myPriority = priority;
+        if (priority > pCurrent) {
+            swim(index);
+        }
+        else {
+            sink(index);
+        }
     }
 
     /**

@@ -8,6 +8,8 @@ import java.util.Random;
 import java.util.ArrayList;
 
 public class RoomDrawTest {
+    private static int SEED = 24789714;
+    private static Random r = new Random(SEED);
 
     public static void fillWorld(TETile[][] tiles) {
         int height = tiles[0].length;
@@ -20,36 +22,36 @@ public class RoomDrawTest {
     }
 
     public static void main(String[] args) {
-        final int WIDTH = 62 ;
-        final int HEIGHT = 33;
-        int SEED = 41414;
+        final int WIDTH = 60 ;
+        final int HEIGHT = 30;
+        int SEED = 12;
         Random r = new Random(SEED);
 
-        TETile[][] tiles = new TETile[60][30];
+        TETile[][] tiles = new TETile[WIDTH][HEIGHT];
         TERenderer ter = new TERenderer();
-        ter.initialize(WIDTH, HEIGHT, 1, 3);
+        ter.initialize(WIDTH, HEIGHT);
         fillWorld(tiles);
         ArrayList<Room> rooms = new ArrayList<>();
         ArrayList<Hallway> hallways = new ArrayList<>();
 
-        for (int i = 0; i < 24 ; i++) {
-            Room room = new Room(r.nextInt(7) + 1, r.nextInt(7) + 1, 60, 30, true);
+        for (int i = 0; i < 2; i++) {
+            Room room = new Room(r.nextInt(7) + 1, r.nextInt(7) + 1, tiles);
             rooms.add(room);
-            room.drawRoom();
+            room.drawRoom(tiles);
             System.out.println(room.getCenter().x() + " " + room.getCenter().y());
         }
 
         for (int i = 1; i < rooms.size(); i++) {
-            Hallway h = new Hallway(rooms.get(i).getCenter(), rooms.get(i - 1).getCenter(), true);
+            Hallway h = new Hallway(rooms.get(i).getCenter(), rooms.get(i - 1).getCenter());
             hallways.add(h);
             h.drawHallway(tiles);
         }
         for (int i = 0; i < rooms.size(); i++) {
-            rooms.get(i).drawWall();
+            rooms.get(i).drawWall(tiles);
         }
-        for (int i = 0; i < hallways.size(); i++) {
-            hallways.get(i).drawWall(tiles);
-        }
+//        for (int i = 0; i < hallways.size(); i++) {
+//            hallways.get(i).drawWall(tiles);
+//        }
         ter.renderFrame(tiles);
     }
 

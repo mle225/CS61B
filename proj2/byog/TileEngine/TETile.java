@@ -105,6 +105,10 @@ public class TETile {
         return character;
     }
 
+    public void inView() {
+
+    }
+
     /**
      * Description of the tile. Useful for displaying mouseover text or
      * testing that two tiles represent the same type of thing.

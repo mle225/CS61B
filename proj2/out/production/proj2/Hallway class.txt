@@ -1,0 +1,59 @@
+package byog.Core;
+
+import byog.TileEngine.TETile;
+import byog.TileEngine.Tileset;
+
+import java.util.Random;
+
+public class Hallway {
+
+    private static int SEED = 214152;
+    private static Random r = new Random(SEED);
+
+    private int width;
+    private Point start;
+    private Point end;
+    int left, top, bot, right;
+
+    public Hallway(Point startPt, Point endPt) {
+
+        width = r.nextInt(2) + 1;
+        start = startPt;
+        end = endPt;
+        left = Math.min(start.x(), end.x());
+        right = Math.max(start.x(), end.x());
+        top = Math.max(start.y(), end.y());
+        bot = Math.min(start.y(), end.y());
+    }
+
+    public void drawHallway(TETile[][] map) {
+        if (start.alignVertical(end) || start.alignHorizontal(end)) {
+            if (start.alignHorizontal(end)) {
+                for (int x = left; x < right; x++) {
+                    map[x][start.y()] = Tileset.FLOOR;
+                }
+            } else if (start.alignVertical(end)) {
+                for (int y = bot; y < top; y++) {
+                    map[start.x()][y] = Tileset.FLOOR;
+                }
+            }
+        } else {
+            for (int col = left; col < right; col++) {
+                map[bot][col] = Tileset.FLOOR;
+            }
+            for (int row = bot; row < top; row++) {
+                map[row][right] = Tileset.FLOOR;
+            }
+        }
+    }
+
+    public void drawWall(TETile[][] map) {
+        for (int row = bot - 1; row < top + 1; row++) {
+            for (int col = left - 1; col < right + 1; col++) {
+                if (map[row][col] == Tileset.NOTHING) {
+                    map[row][col] = Tileset.WALL;
+                }
+            }
+        }
+    }
+}
