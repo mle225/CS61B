@@ -68,8 +68,8 @@ public class Board implements WorldState{
         int count = 0;
         for (int i = 0; i < size; i++) {
             for (int j = 0; j < size; j++) {
-                int expected = size * i + (j + 1);
-                if (board[i][j] != expected) {
+                int expected = (i == size - 1 && j == size - 1) ? 0 :size * i + (j + 1);
+                if (board[i][j] != expected && board[i][j] != 0) {
                     ++count;
                 }
             }
@@ -82,10 +82,13 @@ public class Board implements WorldState{
         for (int i = 0; i < size; i++) {
             for (int j = 0; j < size; j++) {
                 int expected = (i == size - 1 && j == size - 1) ? 0 :size * i + (j + 1);
-                if (board[i][j] != expected) {
-                    int expR = (expected - 1) / size;
-                    int expC = (expected - 1) % size;
-                    sum += Math.abs(expR - i) + Math.abs(expC - j);
+                int actual = board[i][j];
+                if (actual != 0) {
+                    if (actual != expected) {
+                        int expR = (actual - 1) / size;
+                        int expC = (actual - 1) % size;
+                        sum += Math.abs(expR - i) + Math.abs(expC - j);
+                    }
                 }
             }
         }
