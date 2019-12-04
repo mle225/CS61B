@@ -37,8 +37,8 @@ public class mTest {
     public static void main(String[] args) {
 
         int[][] b1 =
-                {{0,1,3},
-                 {4,2,5},
+                {{1,2,3},
+                 {0,4,5},
                  {7,8,6}};
 
         mTest m1 = new mTest(b1);

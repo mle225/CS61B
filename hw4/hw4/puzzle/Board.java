@@ -17,6 +17,7 @@ public class Board implements WorldState{
                 board[i][j] = tiles[i][j];
             }
         }
+        est = manhattan();
     }
 
     public int tileAt(int i, int j) {
@@ -74,14 +75,14 @@ public class Board implements WorldState{
                 }
             }
         }
-        return count;
+        return count - 1;
     }
 
     public int manhattan() {
         int sum = 0;
         for (int i = 0; i < size; i++) {
             for (int j = 0; j < size; j++) {
-                int expected = (i == size - 1 && j == size - 1) ? 0 :size * i + (j + 1);
+                int expected = size * i + (j + 1);
                 int actual = board[i][j];
                 if (actual != 0) {
                     if (actual != expected) {
@@ -92,7 +93,6 @@ public class Board implements WorldState{
                 }
             }
         }
-        est = sum;
         return sum;
     }
 
@@ -100,11 +100,6 @@ public class Board implements WorldState{
     public int estimatedDistanceToGoal() {
 
         return est;
-    }
-
-    @Override
-    public boolean isGoal() {
-        return estimatedDistanceToGoal() == 0;
     }
 
     @Override

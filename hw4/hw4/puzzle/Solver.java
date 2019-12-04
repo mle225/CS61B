@@ -23,7 +23,6 @@ public class Solver {
             return moves;
         }
 
-        //del if not needed
         public searchNode getPrev() {
             return prev;
         }
@@ -56,48 +55,53 @@ public class Solver {
     }
 
     private int totalMoves;
-    private int counter = 0;
-    private Iterable<WorldState> iws;
     private MinPQ<searchNode> pq = new MinPQ<>();
-    LinkedList<WorldState> res = new LinkedList<>();
+    private LinkedList<WorldState> res = new LinkedList<>();
 
     public Solver(WorldState initial) {
 
-        int soFar = 0;
-        //insert initial node first
-        searchNode init = new searchNode(initial, null, 0);
-        pq.insert(init);
-        //add initial sNode to return iterable
-        soFar++;
-        //remove Min
-        pq.delMin();
-        //add each nb of min to pq
-        Iterable<WorldState> nb = init.getNeighbors();
-        for (WorldState w : nb) {
-            pq.insert(new searchNode(w, init, 1));
-            ++counter;
+        //checks if initial is already goal
+        boolean found = false;
+        if (initial.isGoal()) {
+            res.addFirst(initial);
+            totalMoves = 0;
+            found = true;
         }
-        //by this point, finished adding first sNode's neighbors into pq
-        //proceed to repeat process for each nb in pq
-        while (!pq.min().isGoal()) {
-            searchNode min = pq.min();
-            searchNode prev = min.getPrev();
+        if (!found) {
+            int soFar = 0;
+            //insert initial node first
+            searchNode init = new searchNode(initial, null, 0);
+            pq.insert(init);
+            //add initial sNode to return iterable
             soFar++;
-            if (min.dSoFar() < soFar) {
-                soFar = min.dSoFar();
-            }
+            //remove Min
             pq.delMin();
-            Iterable<WorldState> nbs = min.getNeighbors();
-            for (WorldState w : nbs) {
-                //check if equals grandparent, if not -> insert
-                if (!w.equals(prev.getWs())) {
-                    pq.insert(new searchNode(w, min, min.dSoFar() + 1));
-                    ++counter;
+            //add each nb of min to pq
+            Iterable<WorldState> nb = init.getNeighbors();
+            for (WorldState w : nb) {
+                pq.insert(new searchNode(w, init, 1));
+            }
+            //by this point, finished adding first sNode's neighbors into pq
+            //proceed to repeat process for each nb in pq
+            while (!pq.min().isGoal()) {
+                searchNode min = pq.min();
+                searchNode prev = min.getPrev();
+                soFar++;
+                if (min.dSoFar() < soFar) {
+                    soFar = min.dSoFar();
+                }
+                pq.delMin();
+                Iterable<WorldState> nbs = min.getNeighbors();
+                for (WorldState w : nbs) {
+                    //check if equals grandparent, if not -> insert
+                    if (!w.equals(prev.getWs())) {
+                        pq.insert(new searchNode(w, min, min.dSoFar() + 1));
+                    }
                 }
             }
+            getPath(pq.min());
+            totalMoves = ++soFar;
         }
-        getPath(pq.min());
-        totalMoves = ++soFar;
     }
 
     private void getPath(searchNode sn) {
@@ -115,7 +119,4 @@ public class Solver {
         return res;
     }
 
-    public int getCounter() {
-        return counter;
-    }
 }

@@ -8,7 +8,7 @@ public class WordPuzzleSolver {
      **********************************************************************/
     public static void main(String[] args) {
         String start = "horse";
-        String goal = "nurse";
+        String goal = "pure";
 
         Word startState = new Word(start, goal);
         Solver solver = new Solver(startState);
